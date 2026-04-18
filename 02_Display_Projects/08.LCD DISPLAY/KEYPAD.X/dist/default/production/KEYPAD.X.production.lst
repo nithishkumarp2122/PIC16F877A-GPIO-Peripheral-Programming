@@ -1,0 +1,2618 @@
+
+
+Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
+                                                                                               Tue Nov  4 11:28:05 2025
+
+Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	strings,global,class=STRING,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     7                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+     9                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    10                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    11                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text7,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text8,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	text9,local,class=CODE,space=0,merge=1,delta=2
+    17                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    18                           	dabs	1,0x7E,2
+    19     0000                     
+    20                           ; Generated 12/10/2023 GMT
+    21                           ; 
+    22                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    23                           ; All rights reserved.
+    24                           ; 
+    25                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    26                           ; 
+    27                           ; Redistribution and use in source and binary forms, with or without modification, are
+    28                           ; permitted provided that the following conditions are met:
+    29                           ; 
+    30                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    31                           ;        conditions and the following disclaimer.
+    32                           ; 
+    33                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    34                           ;        of conditions and the following disclaimer in the documentation and/or other
+    35                           ;        materials provided with the distribution. Publication is not required when
+    36                           ;        this file is used in an embedded application.
+    37                           ; 
+    38                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    39                           ;        software without specific prior written permission.
+    40                           ; 
+    41                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    42                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    43                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    44                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    45                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    46                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    47                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    48                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    49                           ; 
+    50                           ; 
+    51                           ; Code-generator required, PIC16F877A Definitions
+    52                           ; 
+    53                           ; SFR Addresses
+    54     0004                     fsr             equ	4
+    55     0004                     fsr0            equ	4
+    56     0000                     indf            equ	0
+    57     0000                     indf0           equ	0
+    58     0002                     pc              equ	2
+    59     0002                     pcl             equ	2
+    60     000A                     pclath          equ	10
+    61     0003                     status          equ	3
+    62     0000                     INDF            equ	0	;# 
+    63     0001                     TMR0            equ	1	;# 
+    64     0002                     PCL             equ	2	;# 
+    65     0003                     STATUS          equ	3	;# 
+    66     0004                     FSR             equ	4	;# 
+    67     0005                     PORTA           equ	5	;# 
+    68     0006                     PORTB           equ	6	;# 
+    69     0007                     PORTC           equ	7	;# 
+    70     0008                     PORTD           equ	8	;# 
+    71     0009                     PORTE           equ	9	;# 
+    72     000A                     PCLATH          equ	10	;# 
+    73     000B                     INTCON          equ	11	;# 
+    74     000C                     PIR1            equ	12	;# 
+    75     000D                     PIR2            equ	13	;# 
+    76     000E                     TMR1            equ	14	;# 
+    77     000E                     TMR1L           equ	14	;# 
+    78     000F                     TMR1H           equ	15	;# 
+    79     0010                     T1CON           equ	16	;# 
+    80     0011                     TMR2            equ	17	;# 
+    81     0012                     T2CON           equ	18	;# 
+    82     0013                     SSPBUF          equ	19	;# 
+    83     0014                     SSPCON          equ	20	;# 
+    84     0015                     CCPR1           equ	21	;# 
+    85     0015                     CCPR1L          equ	21	;# 
+    86     0016                     CCPR1H          equ	22	;# 
+    87     0017                     CCP1CON         equ	23	;# 
+    88     0018                     RCSTA           equ	24	;# 
+    89     0019                     TXREG           equ	25	;# 
+    90     001A                     RCREG           equ	26	;# 
+    91     001B                     CCPR2           equ	27	;# 
+    92     001B                     CCPR2L          equ	27	;# 
+    93     001C                     CCPR2H          equ	28	;# 
+    94     001D                     CCP2CON         equ	29	;# 
+    95     001E                     ADRESH          equ	30	;# 
+    96     001F                     ADCON0          equ	31	;# 
+    97     0081                     OPTION_REG      equ	129	;# 
+    98     0085                     TRISA           equ	133	;# 
+    99     0086                     TRISB           equ	134	;# 
+   100     0087                     TRISC           equ	135	;# 
+   101     0088                     TRISD           equ	136	;# 
+   102     0089                     TRISE           equ	137	;# 
+   103     008C                     PIE1            equ	140	;# 
+   104     008D                     PIE2            equ	141	;# 
+   105     008E                     PCON            equ	142	;# 
+   106     0091                     SSPCON2         equ	145	;# 
+   107     0092                     PR2             equ	146	;# 
+   108     0093                     SSPADD          equ	147	;# 
+   109     0094                     SSPSTAT         equ	148	;# 
+   110     0098                     TXSTA           equ	152	;# 
+   111     0099                     SPBRG           equ	153	;# 
+   112     009C                     CMCON           equ	156	;# 
+   113     009D                     CVRCON          equ	157	;# 
+   114     009E                     ADRESL          equ	158	;# 
+   115     009F                     ADCON1          equ	159	;# 
+   116     010C                     EEDATA          equ	268	;# 
+   117     010D                     EEADR           equ	269	;# 
+   118     010E                     EEDATH          equ	270	;# 
+   119     010F                     EEADRH          equ	271	;# 
+   120     018C                     EECON1          equ	396	;# 
+   121     018D                     EECON2          equ	397	;# 
+   122     0000                     INDF            equ	0	;# 
+   123     0001                     TMR0            equ	1	;# 
+   124     0002                     PCL             equ	2	;# 
+   125     0003                     STATUS          equ	3	;# 
+   126     0004                     FSR             equ	4	;# 
+   127     0005                     PORTA           equ	5	;# 
+   128     0006                     PORTB           equ	6	;# 
+   129     0007                     PORTC           equ	7	;# 
+   130     0008                     PORTD           equ	8	;# 
+   131     0009                     PORTE           equ	9	;# 
+   132     000A                     PCLATH          equ	10	;# 
+   133     000B                     INTCON          equ	11	;# 
+   134     000C                     PIR1            equ	12	;# 
+   135     000D                     PIR2            equ	13	;# 
+   136     000E                     TMR1            equ	14	;# 
+   137     000E                     TMR1L           equ	14	;# 
+   138     000F                     TMR1H           equ	15	;# 
+   139     0010                     T1CON           equ	16	;# 
+   140     0011                     TMR2            equ	17	;# 
+   141     0012                     T2CON           equ	18	;# 
+   142     0013                     SSPBUF          equ	19	;# 
+   143     0014                     SSPCON          equ	20	;# 
+   144     0015                     CCPR1           equ	21	;# 
+   145     0015                     CCPR1L          equ	21	;# 
+   146     0016                     CCPR1H          equ	22	;# 
+   147     0017                     CCP1CON         equ	23	;# 
+   148     0018                     RCSTA           equ	24	;# 
+   149     0019                     TXREG           equ	25	;# 
+   150     001A                     RCREG           equ	26	;# 
+   151     001B                     CCPR2           equ	27	;# 
+   152     001B                     CCPR2L          equ	27	;# 
+   153     001C                     CCPR2H          equ	28	;# 
+   154     001D                     CCP2CON         equ	29	;# 
+   155     001E                     ADRESH          equ	30	;# 
+   156     001F                     ADCON0          equ	31	;# 
+   157     0081                     OPTION_REG      equ	129	;# 
+   158     0085                     TRISA           equ	133	;# 
+   159     0086                     TRISB           equ	134	;# 
+   160     0087                     TRISC           equ	135	;# 
+   161     0088                     TRISD           equ	136	;# 
+   162     0089                     TRISE           equ	137	;# 
+   163     008C                     PIE1            equ	140	;# 
+   164     008D                     PIE2            equ	141	;# 
+   165     008E                     PCON            equ	142	;# 
+   166     0091                     SSPCON2         equ	145	;# 
+   167     0092                     PR2             equ	146	;# 
+   168     0093                     SSPADD          equ	147	;# 
+   169     0094                     SSPSTAT         equ	148	;# 
+   170     0098                     TXSTA           equ	152	;# 
+   171     0099                     SPBRG           equ	153	;# 
+   172     009C                     CMCON           equ	156	;# 
+   173     009D                     CVRCON          equ	157	;# 
+   174     009E                     ADRESL          equ	158	;# 
+   175     009F                     ADCON1          equ	159	;# 
+   176     010C                     EEDATA          equ	268	;# 
+   177     010D                     EEADR           equ	269	;# 
+   178     010E                     EEDATH          equ	270	;# 
+   179     010F                     EEADRH          equ	271	;# 
+   180     018C                     EECON1          equ	396	;# 
+   181     018D                     EECON2          equ	397	;# 
+   182     0006                     _PORTB          set	6
+   183     0040                     _RD0            set	64
+   184     0043                     _RD3            set	67
+   185     0042                     _RD2            set	66
+   186     0041                     _RD1            set	65
+   187     0047                     _RD7            set	71
+   188     0046                     _RD6            set	70
+   189     0045                     _RD5            set	69
+   190     0044                     _RD4            set	68
+   191     0039                     _RC1            set	57
+   192     0038                     _RC0            set	56
+   193     0088                     _TRISD          set	136
+   194     0086                     _TRISB          set	134
+   195     0439                     _TRISC1         set	1081
+   196     0438                     _TRISC0         set	1080
+   197                           
+   198                           	psect	strings
+   199     0003                     __pstrings:
+   200     0003                     stringtab:
+   201     0003                     __stringtab:
+   202     0003                     stringcode:	
+   203                           ;	String table - string pointers are 1 byte each
+   204                           
+   205     0003                     stringdir:
+   206     0003  3000               	movlw	high stringdir
+   207     0004  008A               	movwf	10
+   208     0005  0804               	movf	4,w
+   209     0006  0A84               	incf	4,f
+   210     0007  0782               	addwf	2,f
+   211     0008                     __stringbase:
+   212     0008  3400               	retlw	0
+   213     0009                     __end_of__stringtab:
+   214     0009                     STR_1:
+   215     0009  3445               	retlw	69	;'E'
+   216     000A  346E               	retlw	110	;'n'
+   217     000B  3474               	retlw	116	;'t'
+   218     000C  3465               	retlw	101	;'e'
+   219     000D  3472               	retlw	114	;'r'
+   220     000E  3420               	retlw	32	;' '
+   221     000F  3474               	retlw	116	;'t'
+   222     0010  3468               	retlw	104	;'h'
+   223     0011  3465               	retlw	101	;'e'
+   224     0012  3420               	retlw	32	;' '
+   225     0013  344E               	retlw	78	;'N'
+   226     0014  3475               	retlw	117	;'u'
+   227     0015  346D               	retlw	109	;'m'
+   228     0016  3462               	retlw	98	;'b'
+   229     0017  3465               	retlw	101	;'e'
+   230     0018  3472               	retlw	114	;'r'
+   231     0019  3400               	retlw	0
+   232                           
+   233                           	psect	cinit
+   234     07FC                     start_initialization:	
+   235                           ; #config settings
+   236                           
+   237     07FC                     __initialization:
+   238     07FC                     end_of_initialization:	
+   239                           ;End of C runtime variable initialization code
+   240                           
+   241     07FC                     __end_of__initialization:
+   242     07FC  0183               	clrf	3
+   243     07FD  120A  118A  2C29   	ljmp	_main	;jump to C main() function
+   244                           
+   245                           	psect	cstackCOMMON
+   246     0070                     __pcstackCOMMON:
+   247     0070                     ?_lcd_init:
+   248     0070                     ?_send_cmd:	
+   249                           ; 1 bytes @ 0x0
+   250                           
+   251     0070                     ?_keypad:	
+   252                           ; 1 bytes @ 0x0
+   253                           
+   254     0070                     ?_row1:	
+   255                           ; 1 bytes @ 0x0
+   256                           
+   257     0070                     ?_row2:	
+   258                           ; 1 bytes @ 0x0
+   259                           
+   260     0070                     ?_row3:	
+   261                           ; 1 bytes @ 0x0
+   262                           
+   263     0070                     ?_row4:	
+   264                           ; 1 bytes @ 0x0
+   265                           
+   266     0070                     ?_send_dat:	
+   267                           ; 1 bytes @ 0x0
+   268                           
+   269     0070                     ?_main:	
+   270                           ; 1 bytes @ 0x0
+   271                           
+   272     0070                     ??_send_cmd:	
+   273                           ; 2 bytes @ 0x0
+   274                           
+   275     0070                     ??_send_dat:	
+   276                           ; 1 bytes @ 0x0
+   277                           
+   278                           
+   279                           ; 1 bytes @ 0x0
+   280     0070                     	ds	2
+   281     0072                     send_cmd@a:
+   282     0072                     send_dat@b:	
+   283                           ; 1 bytes @ 0x2
+   284                           
+   285                           
+   286                           ; 1 bytes @ 0x2
+   287     0072                     	ds	1
+   288     0073                     ?_show_dat:
+   289     0073                     show_dat@s:	
+   290                           ; 1 bytes @ 0x3
+   291                           
+   292     0073                     ??_lcd_init:	
+   293                           ; 1 bytes @ 0x3
+   294                           
+   295     0073                     ??_row1:	
+   296                           ; 1 bytes @ 0x3
+   297                           
+   298     0073                     ??_row2:	
+   299                           ; 1 bytes @ 0x3
+   300                           
+   301     0073                     ??_row3:	
+   302                           ; 1 bytes @ 0x3
+   303                           
+   304     0073                     ??_row4:	
+   305                           ; 1 bytes @ 0x3
+   306                           
+   307                           
+   308                           ; 1 bytes @ 0x3
+   309     0073                     	ds	1
+   310     0074                     ??_show_dat:
+   311     0074                     ??_keypad:	
+   312                           ; 1 bytes @ 0x4
+   313                           
+   314     0074                     ??_main:	
+   315                           ; 1 bytes @ 0x4
+   316                           
+   317                           
+   318                           	psect	maintext
+   319     0429                     __pmaintext:	
+   320                           ; 1 bytes @ 0x4
+   321 ;;
+   322 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   323 ;;
+   324 ;; *************** function _main *****************
+   325 ;; Defined at:
+   326 ;;		line 43 in file "KEYPAD.c"
+   327 ;; Parameters:    Size  Location     Type
+   328 ;;		None
+   329 ;; Auto vars:     Size  Location     Type
+   330 ;;		None
+   331 ;; Return value:  Size  Location     Type
+   332 ;;                  2   52[None  ] int 
+   333 ;; Registers used:
+   334 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   335 ;; Tracked objects:
+   336 ;;		On entry : B00/0
+   337 ;;		On exit  : 0/0
+   338 ;;		Unchanged: 0/0
+   339 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   340 ;;      Params:         0       0       0       0       0
+   341 ;;      Locals:         0       0       0       0       0
+   342 ;;      Temps:          0       0       0       0       0
+   343 ;;      Totals:         0       0       0       0       0
+   344 ;;Total ram usage:        0 bytes
+   345 ;; Hardware stack levels required when called: 3
+   346 ;; This function calls:
+   347 ;;		_keypad
+   348 ;;		_lcd_init
+   349 ;;		_send_cmd
+   350 ;;		_show_dat
+   351 ;; This function is called by:
+   352 ;;		Startup code after reset
+   353 ;; This function uses a non-reentrant model
+   354 ;;
+   355                           
+   356     0429                     _main:	
+   357                           ;psect for function _main
+   358                           
+   359     0429                     l862:	
+   360                           ;incstack = 0
+   361                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   362                           
+   363                           
+   364                           ;KEYPAD.c: 44:     TRISB = 0x00;
+   365     0429  1683               	bsf	3,5	;RP0=1, select bank1
+   366     042A  1303               	bcf	3,6	;RP1=0, select bank1
+   367     042B  0186               	clrf	6	;volatile
+   368     042C                     l864:
+   369                           
+   370                           ;KEYPAD.c: 45:     TRISC0 = 0;
+   371     042C  1007               	bcf	7,0	;volatile
+   372     042D                     l866:
+   373                           
+   374                           ;KEYPAD.c: 46:     TRISC1 = 0;
+   375     042D  1087               	bcf	7,1	;volatile
+   376                           
+   377                           ;KEYPAD.c: 47:     TRISD=0X00;
+   378     042E  0188               	clrf	8	;volatile
+   379     042F                     l868:
+   380                           
+   381                           ;KEYPAD.c: 48:  lcd_init();
+   382     042F  120A  118A  2404  120A  118A  	fcall	_lcd_init
+   383     0434                     l870:
+   384                           
+   385                           ;KEYPAD.c: 50:   {;KEYPAD.c: 51:    send_cmd(0x80);
+   386     0434  3080               	movlw	128
+   387     0435  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   388     043A                     l872:
+   389                           
+   390                           ;KEYPAD.c: 52:    show_dat("Enter the Number");
+   391     043A  3001               	movlw	(low ((STR_1-__stringbase)| (0+32768)))& (0+255)
+   392     043B  00F3               	movwf	show_dat@s
+   393     043C  120A  118A  23E8  120A  118A  	fcall	_show_dat
+   394     0441                     l874:
+   395                           
+   396                           ;KEYPAD.c: 53:    send_cmd(0xC0);
+   397     0441  30C0               	movlw	192
+   398     0442  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   399     0447                     l876:
+   400                           
+   401                           ;KEYPAD.c: 54:    keypad();
+   402     0447  120A  118A  23D3  120A  118A  	fcall	_keypad
+   403     044C  2C34               	goto	l870
+   404     044D  120A  118A  2800   	ljmp	start
+   405     0450                     __end_of_main:
+   406                           
+   407                           	psect	text1
+   408     03E8                     __ptext1:	
+   409 ;; *************** function _show_dat *****************
+   410 ;; Defined at:
+   411 ;;		line 87 in file "KEYPAD.c"
+   412 ;; Parameters:    Size  Location     Type
+   413 ;;  s               1    3[COMMON] PTR unsigned char 
+   414 ;;		 -> STR_1(17), 
+   415 ;; Auto vars:     Size  Location     Type
+   416 ;;		None
+   417 ;; Return value:  Size  Location     Type
+   418 ;;                  1    wreg      void 
+   419 ;; Registers used:
+   420 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   421 ;; Tracked objects:
+   422 ;;		On entry : 0/0
+   423 ;;		On exit  : 0/0
+   424 ;;		Unchanged: 0/0
+   425 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   426 ;;      Params:         1       0       0       0       0
+   427 ;;      Locals:         0       0       0       0       0
+   428 ;;      Temps:          0       0       0       0       0
+   429 ;;      Totals:         1       0       0       0       0
+   430 ;;Total ram usage:        1 bytes
+   431 ;; Hardware stack levels used: 1
+   432 ;; Hardware stack levels required when called: 1
+   433 ;; This function calls:
+   434 ;;		_send_dat
+   435 ;; This function is called by:
+   436 ;;		_main
+   437 ;; This function uses a non-reentrant model
+   438 ;;
+   439                           
+   440     03E8                     _show_dat:	
+   441                           ;psect for function _show_dat
+   442                           
+   443     03E8                     l854:	
+   444                           ;incstack = 0
+   445                           ; Regs used in _show_dat: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   446                           
+   447                           
+   448                           ;KEYPAD.c: 87: void show_dat(unsigned char *s);KEYPAD.c: 88:  {;KEYPAD.c: 89:   while(*s
+      +                          )
+   449     03E8  2BF7               	goto	l860
+   450     03E9                     l856:
+   451                           
+   452                           ;KEYPAD.c: 90:    {;KEYPAD.c: 91:     send_dat(*s++);
+   453     03E9  0873               	movf	show_dat@s,w
+   454     03EA  0084               	movwf	4
+   455     03EB  120A  118A  2003  120A  118A  	fcall	stringdir
+   456     03F0  120A  118A  23AB  120A  118A  	fcall	_send_dat
+   457     03F5                     l858:
+   458     03F5  3001               	movlw	1
+   459     03F6  07F3               	addwf	show_dat@s,f
+   460     03F7                     l860:
+   461                           
+   462                           ;KEYPAD.c: 89:   while(*s)
+   463     03F7  0873               	movf	show_dat@s,w
+   464     03F8  0084               	movwf	4
+   465     03F9  120A  118A  2003  120A  118A  	fcall	stringdir
+   466     03FE  3A00               	xorlw	0
+   467     03FF  1D03               	skipz
+   468     0400  2C02               	goto	u1261
+   469     0401  2C03               	goto	u1260
+   470     0402                     u1261:
+   471     0402  2BE9               	goto	l856
+   472     0403                     u1260:
+   473     0403                     l71:
+   474     0403  0008               	return
+   475     0404                     __end_of_show_dat:
+   476                           
+   477                           	psect	text2
+   478     0404                     __ptext2:	
+   479 ;; *************** function _lcd_init *****************
+   480 ;; Defined at:
+   481 ;;		line 58 in file "KEYPAD.c"
+   482 ;; Parameters:    Size  Location     Type
+   483 ;;		None
+   484 ;; Auto vars:     Size  Location     Type
+   485 ;;		None
+   486 ;; Return value:  Size  Location     Type
+   487 ;;                  1    wreg      void 
+   488 ;; Registers used:
+   489 ;;		wreg, status,2, status,0, pclath, cstack
+   490 ;; Tracked objects:
+   491 ;;		On entry : 0/0
+   492 ;;		On exit  : 0/0
+   493 ;;		Unchanged: 0/0
+   494 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   495 ;;      Params:         0       0       0       0       0
+   496 ;;      Locals:         0       0       0       0       0
+   497 ;;      Temps:          0       0       0       0       0
+   498 ;;      Totals:         0       0       0       0       0
+   499 ;;Total ram usage:        0 bytes
+   500 ;; Hardware stack levels used: 1
+   501 ;; Hardware stack levels required when called: 1
+   502 ;; This function calls:
+   503 ;;		_send_cmd
+   504 ;; This function is called by:
+   505 ;;		_main
+   506 ;; This function uses a non-reentrant model
+   507 ;;
+   508                           
+   509     0404                     _lcd_init:	
+   510                           ;psect for function _lcd_init
+   511                           
+   512     0404                     l826:	
+   513                           ;incstack = 0
+   514                           ; Regs used in _lcd_init: [wreg+status,2+status,0+pclath+cstack]
+   515                           
+   516                           
+   517                           ;KEYPAD.c: 60:   send_cmd(0x38);
+   518     0404  3038               	movlw	56
+   519     0405  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   520                           
+   521                           ;KEYPAD.c: 61:   send_cmd(0x0e);
+   522     040A  300E               	movlw	14
+   523     040B  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   524                           
+   525                           ;KEYPAD.c: 62:   send_cmd(0x01);
+   526     0410  3001               	movlw	1
+   527     0411  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   528                           
+   529                           ;KEYPAD.c: 63:   send_cmd(0x06);
+   530     0416  3006               	movlw	6
+   531     0417  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   532                           
+   533                           ;KEYPAD.c: 64:   send_cmd(0x80);
+   534     041C  3080               	movlw	128
+   535     041D  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   536                           
+   537                           ;KEYPAD.c: 65:   send_cmd(0x0c);
+   538     0422  300C               	movlw	12
+   539     0423  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   540     0428                     l59:
+   541     0428  0008               	return
+   542     0429                     __end_of_lcd_init:
+   543                           
+   544                           	psect	text3
+   545     03D3                     __ptext3:	
+   546 ;; *************** function _keypad *****************
+   547 ;; Defined at:
+   548 ;;		line 97 in file "KEYPAD.c"
+   549 ;; Parameters:    Size  Location     Type
+   550 ;;		None
+   551 ;; Auto vars:     Size  Location     Type
+   552 ;;		None
+   553 ;; Return value:  Size  Location     Type
+   554 ;;                  1    wreg      void 
+   555 ;; Registers used:
+   556 ;;		wreg, status,2, status,0, pclath, cstack
+   557 ;; Tracked objects:
+   558 ;;		On entry : 0/0
+   559 ;;		On exit  : 0/0
+   560 ;;		Unchanged: 0/0
+   561 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   562 ;;      Params:         0       0       0       0       0
+   563 ;;      Locals:         0       0       0       0       0
+   564 ;;      Temps:          0       0       0       0       0
+   565 ;;      Totals:         0       0       0       0       0
+   566 ;;Total ram usage:        0 bytes
+   567 ;; Hardware stack levels used: 1
+   568 ;; Hardware stack levels required when called: 2
+   569 ;; This function calls:
+   570 ;;		_row1
+   571 ;;		_row2
+   572 ;;		_row3
+   573 ;;		_row4
+   574 ;; This function is called by:
+   575 ;;		_main
+   576 ;; This function uses a non-reentrant model
+   577 ;;
+   578                           
+   579     03D3                     _keypad:	
+   580                           ;psect for function _keypad
+   581                           
+   582     03D3                     l836:	
+   583                           ;incstack = 0
+   584                           ; Regs used in _keypad: [wreg+status,2+status,0+pclath+cstack]
+   585                           
+   586                           
+   587                           ;KEYPAD.c: 99:   row1();
+   588     03D3  120A  118A  2450  120A  118A  	fcall	_row1
+   589                           
+   590                           ;KEYPAD.c: 100:   row2();
+   591     03D8  120A  118A  253B  120A  118A  	fcall	_row2
+   592                           
+   593                           ;KEYPAD.c: 101:   row3();
+   594     03DD  120A  118A  2626  120A  118A  	fcall	_row3
+   595                           
+   596                           ;KEYPAD.c: 102:   row4();
+   597     03E2  120A  118A  2711  120A  118A  	fcall	_row4
+   598     03E7                     l74:
+   599     03E7  0008               	return
+   600     03E8                     __end_of_keypad:
+   601                           
+   602                           	psect	text4
+   603     0711                     __ptext4:	
+   604 ;; *************** function _row4 *****************
+   605 ;; Defined at:
+   606 ;;		line 186 in file "KEYPAD.c"
+   607 ;; Parameters:    Size  Location     Type
+   608 ;;		None
+   609 ;; Auto vars:     Size  Location     Type
+   610 ;;		None
+   611 ;; Return value:  Size  Location     Type
+   612 ;;                  1    wreg      void 
+   613 ;; Registers used:
+   614 ;;		wreg, status,2, status,0, pclath, cstack
+   615 ;; Tracked objects:
+   616 ;;		On entry : 0/0
+   617 ;;		On exit  : 0/0
+   618 ;;		Unchanged: 0/0
+   619 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   620 ;;      Params:         0       0       0       0       0
+   621 ;;      Locals:         0       0       0       0       0
+   622 ;;      Temps:          1       0       0       0       0
+   623 ;;      Totals:         1       0       0       0       0
+   624 ;;Total ram usage:        1 bytes
+   625 ;; Hardware stack levels used: 1
+   626 ;; Hardware stack levels required when called: 1
+   627 ;; This function calls:
+   628 ;;		_send_cmd
+   629 ;;		_send_dat
+   630 ;; This function is called by:
+   631 ;;		_keypad
+   632 ;; This function uses a non-reentrant model
+   633 ;;
+   634                           
+   635     0711                     _row4:	
+   636                           ;psect for function _row4
+   637                           
+   638     0711                     l800:	
+   639                           ;incstack = 0
+   640                           ; Regs used in _row4: [wreg+status,2+status,0+pclath+cstack]
+   641                           
+   642                           
+   643                           ;KEYPAD.c: 188:    RD4=RD5=RD6=RD7=1;
+   644     0711  1283               	bcf	3,5	;RP0=0, select bank0
+   645     0712  1303               	bcf	3,6	;RP1=0, select bank0
+   646     0713  1788               	bsf	8,7	;volatile
+   647     0714  1B88               	btfsc	8,7	;volatile
+   648     0715  2F17               	goto	u941
+   649     0716  2F1B               	goto	u940
+   650     0717                     u941:
+   651     0717  1283               	bcf	3,5	;RP0=0, select bank0
+   652     0718  1303               	bcf	3,6	;RP1=0, select bank0
+   653     0719  1708               	bsf	8,6	;volatile
+   654     071A  2F1E               	goto	u954
+   655     071B                     u940:
+   656     071B  1283               	bcf	3,5	;RP0=0, select bank0
+   657     071C  1303               	bcf	3,6	;RP1=0, select bank0
+   658     071D  1308               	bcf	8,6	;volatile
+   659     071E                     u954:
+   660     071E  1B08               	btfsc	8,6	;volatile
+   661     071F  2F21               	goto	u951
+   662     0720  2F25               	goto	u950
+   663     0721                     u951:
+   664     0721  1283               	bcf	3,5	;RP0=0, select bank0
+   665     0722  1303               	bcf	3,6	;RP1=0, select bank0
+   666     0723  1688               	bsf	8,5	;volatile
+   667     0724  2F28               	goto	u964
+   668     0725                     u950:
+   669     0725  1283               	bcf	3,5	;RP0=0, select bank0
+   670     0726  1303               	bcf	3,6	;RP1=0, select bank0
+   671     0727  1288               	bcf	8,5	;volatile
+   672     0728                     u964:
+   673     0728  1A88               	btfsc	8,5	;volatile
+   674     0729  2F2B               	goto	u961
+   675     072A  2F2F               	goto	u960
+   676     072B                     u961:
+   677     072B  1283               	bcf	3,5	;RP0=0, select bank0
+   678     072C  1303               	bcf	3,6	;RP1=0, select bank0
+   679     072D  1608               	bsf	8,4	;volatile
+   680     072E  2F32               	goto	u974
+   681     072F                     u960:
+   682     072F  1283               	bcf	3,5	;RP0=0, select bank0
+   683     0730  1303               	bcf	3,6	;RP1=0, select bank0
+   684     0731  1208               	bcf	8,4	;volatile
+   685     0732                     u974:
+   686                           
+   687                           ;KEYPAD.c: 189:   RD1=RD2=RD0=1;
+   688     0732  1408               	bsf	8,0	;volatile
+   689     0733  1808               	btfsc	8,0	;volatile
+   690     0734  2F36               	goto	u981
+   691     0735  2F3A               	goto	u980
+   692     0736                     u981:
+   693     0736  1283               	bcf	3,5	;RP0=0, select bank0
+   694     0737  1303               	bcf	3,6	;RP1=0, select bank0
+   695     0738  1508               	bsf	8,2	;volatile
+   696     0739  2F3D               	goto	u994
+   697     073A                     u980:
+   698     073A  1283               	bcf	3,5	;RP0=0, select bank0
+   699     073B  1303               	bcf	3,6	;RP1=0, select bank0
+   700     073C  1108               	bcf	8,2	;volatile
+   701     073D                     u994:
+   702     073D  1908               	btfsc	8,2	;volatile
+   703     073E  2F40               	goto	u991
+   704     073F  2F44               	goto	u990
+   705     0740                     u991:
+   706     0740  1283               	bcf	3,5	;RP0=0, select bank0
+   707     0741  1303               	bcf	3,6	;RP1=0, select bank0
+   708     0742  1488               	bsf	8,1	;volatile
+   709     0743  2F47               	goto	u1004
+   710     0744                     u990:
+   711     0744  1283               	bcf	3,5	;RP0=0, select bank0
+   712     0745  1303               	bcf	3,6	;RP1=0, select bank0
+   713     0746  1088               	bcf	8,1	;volatile
+   714     0747                     u1004:
+   715                           
+   716                           ;KEYPAD.c: 190:   RD3=0;
+   717     0747  1188               	bcf	8,3	;volatile
+   718     0748                     l802:
+   719                           
+   720                           ;KEYPAD.c: 191:   if(RD4==RD3)
+   721     0748  1988               	btfsc	8,3	;volatile
+   722     0749  2F4B               	goto	u1011
+   723     074A  2F4D               	goto	u1010
+   724     074B                     u1011:
+   725     074B  3001               	movlw	1
+   726     074C  2F4E               	goto	u1012
+   727     074D                     u1010:
+   728     074D  3000               	movlw	0
+   729     074E                     u1012:
+   730     074E  00F3               	movwf	??_row4
+   731     074F  1A08               	btfsc	8,4	;volatile
+   732     0750  2F52               	goto	u1021
+   733     0751  2F54               	goto	u1020
+   734     0752                     u1021:
+   735     0752  3001               	movlw	1
+   736     0753  2F55               	goto	u1022
+   737     0754                     u1020:
+   738     0754  3000               	movlw	0
+   739     0755                     u1022:
+   740     0755  0673               	xorwf	??_row4,w
+   741     0756  1D03               	skipz
+   742     0757  2F59               	goto	u1031
+   743     0758  2F5A               	goto	u1030
+   744     0759                     u1031:
+   745     0759  2F75               	goto	l808
+   746     075A                     u1030:
+   747     075A                     l804:
+   748                           
+   749                           ;KEYPAD.c: 192:   {;KEYPAD.c: 193:    send_cmd(0x01);
+   750     075A  3001               	movlw	1
+   751     075B  120A  118A  23BF  120A  118A  	fcall	_send_cmd
+   752     0760                     l806:	
+   753                           ;KEYPAD.c: 194:    while(RD4==RD3);
+   754                           
+   755     0760  1283               	bcf	3,5	;RP0=0, select bank0
+   756     0761  1303               	bcf	3,6	;RP1=0, select bank0
+   757     0762  1988               	btfsc	8,3	;volatile
+   758     0763  2F65               	goto	u1041
+   759     0764  2F67               	goto	u1040
+   760     0765                     u1041:
+   761     0765  3001               	movlw	1
+   762     0766  2F68               	goto	u1042
+   763     0767                     u1040:
+   764     0767  3000               	movlw	0
+   765     0768                     u1042:
+   766     0768  00F3               	movwf	??_row4
+   767     0769  1A08               	btfsc	8,4	;volatile
+   768     076A  2F6C               	goto	u1051
+   769     076B  2F6E               	goto	u1050
+   770     076C                     u1051:
+   771     076C  3001               	movlw	1
+   772     076D  2F6F               	goto	u1052
+   773     076E                     u1050:
+   774     076E  3000               	movlw	0
+   775     076F                     u1052:
+   776     076F  0673               	xorwf	??_row4,w
+   777     0770  1903               	skipnz
+   778     0771  2F73               	goto	u1061
+   779     0772  2F74               	goto	u1060
+   780     0773                     u1061:
+   781     0773  2F60               	goto	l806
+   782     0774                     u1060:
+   783     0774  2FFB               	goto	l162
+   784     0775                     l808:
+   785     0775  1988               	btfsc	8,3	;volatile
+   786     0776  2F78               	goto	u1071
+   787     0777  2F7A               	goto	u1070
+   788     0778                     u1071:
+   789     0778  3001               	movlw	1
+   790     0779  2F7B               	goto	u1072
+   791     077A                     u1070:
+   792     077A  3000               	movlw	0
+   793     077B                     u1072:
+   794     077B  00F3               	movwf	??_row4
+   795     077C  1A88               	btfsc	8,5	;volatile
+   796     077D  2F7F               	goto	u1081
+   797     077E  2F81               	goto	u1080
+   798     077F                     u1081:
+   799     077F  3001               	movlw	1
+   800     0780  2F82               	goto	u1082
+   801     0781                     u1080:
+   802     0781  3000               	movlw	0
+   803     0782                     u1082:
+   804     0782  0673               	xorwf	??_row4,w
+   805     0783  1D03               	skipz
+   806     0784  2F86               	goto	u1091
+   807     0785  2F87               	goto	u1090
+   808     0786                     u1091:
+   809     0786  2FA2               	goto	l814
+   810     0787                     u1090:
+   811     0787                     l810:
+   812                           
+   813                           ;KEYPAD.c: 197:   {;KEYPAD.c: 198:    send_dat('0');
+   814     0787  3030               	movlw	48
+   815     0788  120A  118A  23AB  120A  118A  	fcall	_send_dat
+   816     078D                     l812:	
+   817                           ;KEYPAD.c: 199:    while(RD5==RD3);
+   818                           
+   819     078D  1283               	bcf	3,5	;RP0=0, select bank0
+   820     078E  1303               	bcf	3,6	;RP1=0, select bank0
+   821     078F  1988               	btfsc	8,3	;volatile
+   822     0790  2F92               	goto	u1101
+   823     0791  2F94               	goto	u1100
+   824     0792                     u1101:
+   825     0792  3001               	movlw	1
+   826     0793  2F95               	goto	u1102
+   827     0794                     u1100:
+   828     0794  3000               	movlw	0
+   829     0795                     u1102:
+   830     0795  00F3               	movwf	??_row4
+   831     0796  1A88               	btfsc	8,5	;volatile
+   832     0797  2F99               	goto	u1111
+   833     0798  2F9B               	goto	u1110
+   834     0799                     u1111:
+   835     0799  3001               	movlw	1
+   836     079A  2F9C               	goto	u1112
+   837     079B                     u1110:
+   838     079B  3000               	movlw	0
+   839     079C                     u1112:
+   840     079C  0673               	xorwf	??_row4,w
+   841     079D  1903               	skipnz
+   842     079E  2FA0               	goto	u1121
+   843     079F  2FA1               	goto	u1120
+   844     07A0                     u1121:
+   845     07A0  2F8D               	goto	l812
+   846     07A1                     u1120:
+   847     07A1  2FFB               	goto	l162
+   848     07A2                     l814:
+   849     07A2  1988               	btfsc	8,3	;volatile
+   850     07A3  2FA5               	goto	u1131
+   851     07A4  2FA7               	goto	u1130
+   852     07A5                     u1131:
+   853     07A5  3001               	movlw	1
+   854     07A6  2FA8               	goto	u1132
+   855     07A7                     u1130:
+   856     07A7  3000               	movlw	0
+   857     07A8                     u1132:
+   858     07A8  00F3               	movwf	??_row4
+   859     07A9  1B08               	btfsc	8,6	;volatile
+   860     07AA  2FAC               	goto	u1141
+   861     07AB  2FAE               	goto	u1140
+   862     07AC                     u1141:
+   863     07AC  3001               	movlw	1
+   864     07AD  2FAF               	goto	u1142
+   865     07AE                     u1140:
+   866     07AE  3000               	movlw	0
+   867     07AF                     u1142:
+   868     07AF  0673               	xorwf	??_row4,w
+   869     07B0  1D03               	skipz
+   870     07B1  2FB3               	goto	u1151
+   871     07B2  2FB4               	goto	u1150
+   872     07B3                     u1151:
+   873     07B3  2FCF               	goto	l820
+   874     07B4                     u1150:
+   875     07B4                     l816:
+   876                           
+   877                           ;KEYPAD.c: 202:   {;KEYPAD.c: 203:    send_dat('=');
+   878     07B4  303D               	movlw	61
+   879     07B5  120A  118A  23AB  120A  118A  	fcall	_send_dat
+   880     07BA                     l818:	
+   881                           ;KEYPAD.c: 204:    while(RD6==RD3);
+   882                           
+   883     07BA  1283               	bcf	3,5	;RP0=0, select bank0
+   884     07BB  1303               	bcf	3,6	;RP1=0, select bank0
+   885     07BC  1988               	btfsc	8,3	;volatile
+   886     07BD  2FBF               	goto	u1161
+   887     07BE  2FC1               	goto	u1160
+   888     07BF                     u1161:
+   889     07BF  3001               	movlw	1
+   890     07C0  2FC2               	goto	u1162
+   891     07C1                     u1160:
+   892     07C1  3000               	movlw	0
+   893     07C2                     u1162:
+   894     07C2  00F3               	movwf	??_row4
+   895     07C3  1B08               	btfsc	8,6	;volatile
+   896     07C4  2FC6               	goto	u1171
+   897     07C5  2FC8               	goto	u1170
+   898     07C6                     u1171:
+   899     07C6  3001               	movlw	1
+   900     07C7  2FC9               	goto	u1172
+   901     07C8                     u1170:
+   902     07C8  3000               	movlw	0
+   903     07C9                     u1172:
+   904     07C9  0673               	xorwf	??_row4,w
+   905     07CA  1903               	skipnz
+   906     07CB  2FCD               	goto	u1181
+   907     07CC  2FCE               	goto	u1180
+   908     07CD                     u1181:
+   909     07CD  2FBA               	goto	l818
+   910     07CE                     u1180:
+   911     07CE  2FFB               	goto	l162
+   912     07CF                     l820:
+   913     07CF  1988               	btfsc	8,3	;volatile
+   914     07D0  2FD2               	goto	u1191
+   915     07D1  2FD4               	goto	u1190
+   916     07D2                     u1191:
+   917     07D2  3001               	movlw	1
+   918     07D3  2FD5               	goto	u1192
+   919     07D4                     u1190:
+   920     07D4  3000               	movlw	0
+   921     07D5                     u1192:
+   922     07D5  00F3               	movwf	??_row4
+   923     07D6  1B88               	btfsc	8,7	;volatile
+   924     07D7  2FD9               	goto	u1201
+   925     07D8  2FDB               	goto	u1200
+   926     07D9                     u1201:
+   927     07D9  3001               	movlw	1
+   928     07DA  2FDC               	goto	u1202
+   929     07DB                     u1200:
+   930     07DB  3000               	movlw	0
+   931     07DC                     u1202:
+   932     07DC  0673               	xorwf	??_row4,w
+   933     07DD  1D03               	skipz
+   934     07DE  2FE0               	goto	u1211
+   935     07DF  2FE1               	goto	u1210
+   936     07E0                     u1211:
+   937     07E0  2FFB               	goto	l162
+   938     07E1                     u1210:
+   939     07E1                     l822:
+   940                           
+   941                           ;KEYPAD.c: 207:   {;KEYPAD.c: 208:             send_dat('+');
+   942     07E1  302B               	movlw	43
+   943     07E2  120A  118A  23AB  120A  118A  	fcall	_send_dat
+   944     07E7                     l824:	
+   945                           ;KEYPAD.c: 209:    while(RD7==RD3);
+   946                           
+   947     07E7  1283               	bcf	3,5	;RP0=0, select bank0
+   948     07E8  1303               	bcf	3,6	;RP1=0, select bank0
+   949     07E9  1988               	btfsc	8,3	;volatile
+   950     07EA  2FEC               	goto	u1221
+   951     07EB  2FEE               	goto	u1220
+   952     07EC                     u1221:
+   953     07EC  3001               	movlw	1
+   954     07ED  2FEF               	goto	u1222
+   955     07EE                     u1220:
+   956     07EE  3000               	movlw	0
+   957     07EF                     u1222:
+   958     07EF  00F3               	movwf	??_row4
+   959     07F0  1B88               	btfsc	8,7	;volatile
+   960     07F1  2FF3               	goto	u1231
+   961     07F2  2FF5               	goto	u1230
+   962     07F3                     u1231:
+   963     07F3  3001               	movlw	1
+   964     07F4  2FF6               	goto	u1232
+   965     07F5                     u1230:
+   966     07F5  3000               	movlw	0
+   967     07F6                     u1232:
+   968     07F6  0673               	xorwf	??_row4,w
+   969     07F7  1903               	skipnz
+   970     07F8  2FFA               	goto	u1241
+   971     07F9  2FFB               	goto	u1240
+   972     07FA                     u1241:
+   973     07FA  2FE7               	goto	l824
+   974     07FB                     u1240:
+   975     07FB                     l162:
+   976     07FB  0008               	return
+   977     07FC                     __end_of_row4:
+   978                           
+   979                           	psect	text5
+   980     03BF                     __ptext5:	
+   981 ;; *************** function _send_cmd *****************
+   982 ;; Defined at:
+   983 ;;		line 68 in file "KEYPAD.c"
+   984 ;; Parameters:    Size  Location     Type
+   985 ;;  a               1    wreg     unsigned char 
+   986 ;; Auto vars:     Size  Location     Type
+   987 ;;  a               1    2[COMMON] unsigned char 
+   988 ;; Return value:  Size  Location     Type
+   989 ;;                  1    wreg      void 
+   990 ;; Registers used:
+   991 ;;		wreg
+   992 ;; Tracked objects:
+   993 ;;		On entry : 0/0
+   994 ;;		On exit  : 0/0
+   995 ;;		Unchanged: 0/0
+   996 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   997 ;;      Params:         0       0       0       0       0
+   998 ;;      Locals:         1       0       0       0       0
+   999 ;;      Temps:          2       0       0       0       0
+  1000 ;;      Totals:         3       0       0       0       0
+  1001 ;;Total ram usage:        3 bytes
+  1002 ;; Hardware stack levels used: 1
+  1003 ;; This function calls:
+  1004 ;;		Nothing
+  1005 ;; This function is called by:
+  1006 ;;		_main
+  1007 ;;		_lcd_init
+  1008 ;;		_row4
+  1009 ;; This function uses a non-reentrant model
+  1010 ;;
+  1011                           
+  1012     03BF                     _send_cmd:	
+  1013                           ;psect for function _send_cmd
+  1014                           
+  1015                           
+  1016                           ;incstack = 0
+  1017                           ; Regs used in _send_cmd: [wreg]
+  1018                           ;send_cmd@a stored from wreg
+  1019     03BF  00F2               	movwf	send_cmd@a
+  1020     03C0                     l706:
+  1021                           
+  1022                           ;KEYPAD.c: 68: void send_cmd(unsigned char a);KEYPAD.c: 69:  {;KEYPAD.c: 70:   PORTB=a;
+  1023     03C0  0872               	movf	send_cmd@a,w
+  1024     03C1  1283               	bcf	3,5	;RP0=0, select bank0
+  1025     03C2  1303               	bcf	3,6	;RP1=0, select bank0
+  1026     03C3  0086               	movwf	6	;volatile
+  1027     03C4                     l708:
+  1028                           
+  1029                           ;KEYPAD.c: 71:   RC0=0;
+  1030     03C4  1007               	bcf	7,0	;volatile
+  1031     03C5                     l710:
+  1032                           
+  1033                           ;KEYPAD.c: 72:   RC1=1;
+  1034     03C5  1487               	bsf	7,1	;volatile
+  1035                           
+  1036                           ;KEYPAD.c: 73:   _delay((unsigned long)((10)*(20000000/4000.0)));
+  1037     03C6  3041               	movlw	65
+  1038     03C7  00F1               	movwf	??_send_cmd+1
+  1039     03C8  30EE               	movlw	238
+  1040     03C9  00F0               	movwf	??_send_cmd
+  1041     03CA                     u1277:
+  1042     03CA  0BF0               	decfsz	??_send_cmd,f
+  1043     03CB  2BCA               	goto	u1277
+  1044     03CC  0BF1               	decfsz	??_send_cmd+1,f
+  1045     03CD  2BCA               	goto	u1277
+  1046     03CE  0000               	nop
+  1047     03CF                     l712:
+  1048                           
+  1049                           ;KEYPAD.c: 74:   RC1=0;
+  1050     03CF  1283               	bcf	3,5	;RP0=0, select bank0
+  1051     03D0  1303               	bcf	3,6	;RP1=0, select bank0
+  1052     03D1  1087               	bcf	7,1	;volatile
+  1053     03D2                     l62:
+  1054     03D2  0008               	return
+  1055     03D3                     __end_of_send_cmd:
+  1056                           
+  1057                           	psect	text6
+  1058     0626                     __ptext6:	
+  1059 ;; *************** function _row3 *****************
+  1060 ;; Defined at:
+  1061 ;;		line 159 in file "KEYPAD.c"
+  1062 ;; Parameters:    Size  Location     Type
+  1063 ;;		None
+  1064 ;; Auto vars:     Size  Location     Type
+  1065 ;;		None
+  1066 ;; Return value:  Size  Location     Type
+  1067 ;;                  1    wreg      void 
+  1068 ;; Registers used:
+  1069 ;;		wreg, status,2, status,0, pclath, cstack
+  1070 ;; Tracked objects:
+  1071 ;;		On entry : 0/0
+  1072 ;;		On exit  : 0/0
+  1073 ;;		Unchanged: 0/0
+  1074 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1075 ;;      Params:         0       0       0       0       0
+  1076 ;;      Locals:         0       0       0       0       0
+  1077 ;;      Temps:          1       0       0       0       0
+  1078 ;;      Totals:         1       0       0       0       0
+  1079 ;;Total ram usage:        1 bytes
+  1080 ;; Hardware stack levels used: 1
+  1081 ;; Hardware stack levels required when called: 1
+  1082 ;; This function calls:
+  1083 ;;		_send_dat
+  1084 ;; This function is called by:
+  1085 ;;		_keypad
+  1086 ;; This function uses a non-reentrant model
+  1087 ;;
+  1088                           
+  1089     0626                     _row3:	
+  1090                           ;psect for function _row3
+  1091                           
+  1092     0626                     l774:	
+  1093                           ;incstack = 0
+  1094                           ; Regs used in _row3: [wreg+status,2+status,0+pclath+cstack]
+  1095                           
+  1096                           
+  1097                           ;KEYPAD.c: 161:    RD4=RD5=RD6=RD7=1;
+  1098     0626  1283               	bcf	3,5	;RP0=0, select bank0
+  1099     0627  1303               	bcf	3,6	;RP1=0, select bank0
+  1100     0628  1788               	bsf	8,7	;volatile
+  1101     0629  1B88               	btfsc	8,7	;volatile
+  1102     062A  2E2C               	goto	u631
+  1103     062B  2E30               	goto	u630
+  1104     062C                     u631:
+  1105     062C  1283               	bcf	3,5	;RP0=0, select bank0
+  1106     062D  1303               	bcf	3,6	;RP1=0, select bank0
+  1107     062E  1708               	bsf	8,6	;volatile
+  1108     062F  2E33               	goto	u644
+  1109     0630                     u630:
+  1110     0630  1283               	bcf	3,5	;RP0=0, select bank0
+  1111     0631  1303               	bcf	3,6	;RP1=0, select bank0
+  1112     0632  1308               	bcf	8,6	;volatile
+  1113     0633                     u644:
+  1114     0633  1B08               	btfsc	8,6	;volatile
+  1115     0634  2E36               	goto	u641
+  1116     0635  2E3A               	goto	u640
+  1117     0636                     u641:
+  1118     0636  1283               	bcf	3,5	;RP0=0, select bank0
+  1119     0637  1303               	bcf	3,6	;RP1=0, select bank0
+  1120     0638  1688               	bsf	8,5	;volatile
+  1121     0639  2E3D               	goto	u654
+  1122     063A                     u640:
+  1123     063A  1283               	bcf	3,5	;RP0=0, select bank0
+  1124     063B  1303               	bcf	3,6	;RP1=0, select bank0
+  1125     063C  1288               	bcf	8,5	;volatile
+  1126     063D                     u654:
+  1127     063D  1A88               	btfsc	8,5	;volatile
+  1128     063E  2E40               	goto	u651
+  1129     063F  2E44               	goto	u650
+  1130     0640                     u651:
+  1131     0640  1283               	bcf	3,5	;RP0=0, select bank0
+  1132     0641  1303               	bcf	3,6	;RP1=0, select bank0
+  1133     0642  1608               	bsf	8,4	;volatile
+  1134     0643  2E47               	goto	u664
+  1135     0644                     u650:
+  1136     0644  1283               	bcf	3,5	;RP0=0, select bank0
+  1137     0645  1303               	bcf	3,6	;RP1=0, select bank0
+  1138     0646  1208               	bcf	8,4	;volatile
+  1139     0647                     u664:
+  1140                           
+  1141                           ;KEYPAD.c: 162:   RD1=RD0=RD3=1;
+  1142     0647  1588               	bsf	8,3	;volatile
+  1143     0648  1988               	btfsc	8,3	;volatile
+  1144     0649  2E4B               	goto	u671
+  1145     064A  2E4F               	goto	u670
+  1146     064B                     u671:
+  1147     064B  1283               	bcf	3,5	;RP0=0, select bank0
+  1148     064C  1303               	bcf	3,6	;RP1=0, select bank0
+  1149     064D  1408               	bsf	8,0	;volatile
+  1150     064E  2E52               	goto	u684
+  1151     064F                     u670:
+  1152     064F  1283               	bcf	3,5	;RP0=0, select bank0
+  1153     0650  1303               	bcf	3,6	;RP1=0, select bank0
+  1154     0651  1008               	bcf	8,0	;volatile
+  1155     0652                     u684:
+  1156     0652  1808               	btfsc	8,0	;volatile
+  1157     0653  2E55               	goto	u681
+  1158     0654  2E59               	goto	u680
+  1159     0655                     u681:
+  1160     0655  1283               	bcf	3,5	;RP0=0, select bank0
+  1161     0656  1303               	bcf	3,6	;RP1=0, select bank0
+  1162     0657  1488               	bsf	8,1	;volatile
+  1163     0658  2E5C               	goto	u694
+  1164     0659                     u680:
+  1165     0659  1283               	bcf	3,5	;RP0=0, select bank0
+  1166     065A  1303               	bcf	3,6	;RP1=0, select bank0
+  1167     065B  1088               	bcf	8,1	;volatile
+  1168     065C                     u694:
+  1169                           
+  1170                           ;KEYPAD.c: 163:   RD2=0;
+  1171     065C  1108               	bcf	8,2	;volatile
+  1172     065D                     l776:
+  1173                           
+  1174                           ;KEYPAD.c: 164:   if(RD4==RD2)
+  1175     065D  1908               	btfsc	8,2	;volatile
+  1176     065E  2E60               	goto	u701
+  1177     065F  2E62               	goto	u700
+  1178     0660                     u701:
+  1179     0660  3001               	movlw	1
+  1180     0661  2E63               	goto	u702
+  1181     0662                     u700:
+  1182     0662  3000               	movlw	0
+  1183     0663                     u702:
+  1184     0663  00F3               	movwf	??_row3
+  1185     0664  1A08               	btfsc	8,4	;volatile
+  1186     0665  2E67               	goto	u711
+  1187     0666  2E69               	goto	u710
+  1188     0667                     u711:
+  1189     0667  3001               	movlw	1
+  1190     0668  2E6A               	goto	u712
+  1191     0669                     u710:
+  1192     0669  3000               	movlw	0
+  1193     066A                     u712:
+  1194     066A  0673               	xorwf	??_row3,w
+  1195     066B  1D03               	skipz
+  1196     066C  2E6E               	goto	u721
+  1197     066D  2E6F               	goto	u720
+  1198     066E                     u721:
+  1199     066E  2E8A               	goto	l782
+  1200     066F                     u720:
+  1201     066F                     l778:
+  1202                           
+  1203                           ;KEYPAD.c: 165:   {;KEYPAD.c: 166:    send_dat('1');
+  1204     066F  3031               	movlw	49
+  1205     0670  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1206     0675                     l780:	
+  1207                           ;KEYPAD.c: 167:    while(RD4==RD2);
+  1208                           
+  1209     0675  1283               	bcf	3,5	;RP0=0, select bank0
+  1210     0676  1303               	bcf	3,6	;RP1=0, select bank0
+  1211     0677  1908               	btfsc	8,2	;volatile
+  1212     0678  2E7A               	goto	u731
+  1213     0679  2E7C               	goto	u730
+  1214     067A                     u731:
+  1215     067A  3001               	movlw	1
+  1216     067B  2E7D               	goto	u732
+  1217     067C                     u730:
+  1218     067C  3000               	movlw	0
+  1219     067D                     u732:
+  1220     067D  00F3               	movwf	??_row3
+  1221     067E  1A08               	btfsc	8,4	;volatile
+  1222     067F  2E81               	goto	u741
+  1223     0680  2E83               	goto	u740
+  1224     0681                     u741:
+  1225     0681  3001               	movlw	1
+  1226     0682  2E84               	goto	u742
+  1227     0683                     u740:
+  1228     0683  3000               	movlw	0
+  1229     0684                     u742:
+  1230     0684  0673               	xorwf	??_row3,w
+  1231     0685  1903               	skipnz
+  1232     0686  2E88               	goto	u751
+  1233     0687  2E89               	goto	u750
+  1234     0688                     u751:
+  1235     0688  2E75               	goto	l780
+  1236     0689                     u750:
+  1237     0689  2F10               	goto	l140
+  1238     068A                     l782:
+  1239     068A  1908               	btfsc	8,2	;volatile
+  1240     068B  2E8D               	goto	u761
+  1241     068C  2E8F               	goto	u760
+  1242     068D                     u761:
+  1243     068D  3001               	movlw	1
+  1244     068E  2E90               	goto	u762
+  1245     068F                     u760:
+  1246     068F  3000               	movlw	0
+  1247     0690                     u762:
+  1248     0690  00F3               	movwf	??_row3
+  1249     0691  1A88               	btfsc	8,5	;volatile
+  1250     0692  2E94               	goto	u771
+  1251     0693  2E96               	goto	u770
+  1252     0694                     u771:
+  1253     0694  3001               	movlw	1
+  1254     0695  2E97               	goto	u772
+  1255     0696                     u770:
+  1256     0696  3000               	movlw	0
+  1257     0697                     u772:
+  1258     0697  0673               	xorwf	??_row3,w
+  1259     0698  1D03               	skipz
+  1260     0699  2E9B               	goto	u781
+  1261     069A  2E9C               	goto	u780
+  1262     069B                     u781:
+  1263     069B  2EB7               	goto	l788
+  1264     069C                     u780:
+  1265     069C                     l784:
+  1266                           
+  1267                           ;KEYPAD.c: 170:   {;KEYPAD.c: 171:    send_dat('2');
+  1268     069C  3032               	movlw	50
+  1269     069D  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1270     06A2                     l786:	
+  1271                           ;KEYPAD.c: 172:    while(RD5==RD2);
+  1272                           
+  1273     06A2  1283               	bcf	3,5	;RP0=0, select bank0
+  1274     06A3  1303               	bcf	3,6	;RP1=0, select bank0
+  1275     06A4  1908               	btfsc	8,2	;volatile
+  1276     06A5  2EA7               	goto	u791
+  1277     06A6  2EA9               	goto	u790
+  1278     06A7                     u791:
+  1279     06A7  3001               	movlw	1
+  1280     06A8  2EAA               	goto	u792
+  1281     06A9                     u790:
+  1282     06A9  3000               	movlw	0
+  1283     06AA                     u792:
+  1284     06AA  00F3               	movwf	??_row3
+  1285     06AB  1A88               	btfsc	8,5	;volatile
+  1286     06AC  2EAE               	goto	u801
+  1287     06AD  2EB0               	goto	u800
+  1288     06AE                     u801:
+  1289     06AE  3001               	movlw	1
+  1290     06AF  2EB1               	goto	u802
+  1291     06B0                     u800:
+  1292     06B0  3000               	movlw	0
+  1293     06B1                     u802:
+  1294     06B1  0673               	xorwf	??_row3,w
+  1295     06B2  1903               	skipnz
+  1296     06B3  2EB5               	goto	u811
+  1297     06B4  2EB6               	goto	u810
+  1298     06B5                     u811:
+  1299     06B5  2EA2               	goto	l786
+  1300     06B6                     u810:
+  1301     06B6  2F10               	goto	l140
+  1302     06B7                     l788:
+  1303     06B7  1908               	btfsc	8,2	;volatile
+  1304     06B8  2EBA               	goto	u821
+  1305     06B9  2EBC               	goto	u820
+  1306     06BA                     u821:
+  1307     06BA  3001               	movlw	1
+  1308     06BB  2EBD               	goto	u822
+  1309     06BC                     u820:
+  1310     06BC  3000               	movlw	0
+  1311     06BD                     u822:
+  1312     06BD  00F3               	movwf	??_row3
+  1313     06BE  1B08               	btfsc	8,6	;volatile
+  1314     06BF  2EC1               	goto	u831
+  1315     06C0  2EC3               	goto	u830
+  1316     06C1                     u831:
+  1317     06C1  3001               	movlw	1
+  1318     06C2  2EC4               	goto	u832
+  1319     06C3                     u830:
+  1320     06C3  3000               	movlw	0
+  1321     06C4                     u832:
+  1322     06C4  0673               	xorwf	??_row3,w
+  1323     06C5  1D03               	skipz
+  1324     06C6  2EC8               	goto	u841
+  1325     06C7  2EC9               	goto	u840
+  1326     06C8                     u841:
+  1327     06C8  2EE4               	goto	l794
+  1328     06C9                     u840:
+  1329     06C9                     l790:
+  1330                           
+  1331                           ;KEYPAD.c: 175:   {;KEYPAD.c: 176:    send_dat('3');
+  1332     06C9  3033               	movlw	51
+  1333     06CA  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1334     06CF                     l792:	
+  1335                           ;KEYPAD.c: 177:    while(RD6==RD2);
+  1336                           
+  1337     06CF  1283               	bcf	3,5	;RP0=0, select bank0
+  1338     06D0  1303               	bcf	3,6	;RP1=0, select bank0
+  1339     06D1  1908               	btfsc	8,2	;volatile
+  1340     06D2  2ED4               	goto	u851
+  1341     06D3  2ED6               	goto	u850
+  1342     06D4                     u851:
+  1343     06D4  3001               	movlw	1
+  1344     06D5  2ED7               	goto	u852
+  1345     06D6                     u850:
+  1346     06D6  3000               	movlw	0
+  1347     06D7                     u852:
+  1348     06D7  00F3               	movwf	??_row3
+  1349     06D8  1B08               	btfsc	8,6	;volatile
+  1350     06D9  2EDB               	goto	u861
+  1351     06DA  2EDD               	goto	u860
+  1352     06DB                     u861:
+  1353     06DB  3001               	movlw	1
+  1354     06DC  2EDE               	goto	u862
+  1355     06DD                     u860:
+  1356     06DD  3000               	movlw	0
+  1357     06DE                     u862:
+  1358     06DE  0673               	xorwf	??_row3,w
+  1359     06DF  1903               	skipnz
+  1360     06E0  2EE2               	goto	u871
+  1361     06E1  2EE3               	goto	u870
+  1362     06E2                     u871:
+  1363     06E2  2ECF               	goto	l792
+  1364     06E3                     u870:
+  1365     06E3  2F10               	goto	l140
+  1366     06E4                     l794:
+  1367     06E4  1908               	btfsc	8,2	;volatile
+  1368     06E5  2EE7               	goto	u881
+  1369     06E6  2EE9               	goto	u880
+  1370     06E7                     u881:
+  1371     06E7  3001               	movlw	1
+  1372     06E8  2EEA               	goto	u882
+  1373     06E9                     u880:
+  1374     06E9  3000               	movlw	0
+  1375     06EA                     u882:
+  1376     06EA  00F3               	movwf	??_row3
+  1377     06EB  1B88               	btfsc	8,7	;volatile
+  1378     06EC  2EEE               	goto	u891
+  1379     06ED  2EF0               	goto	u890
+  1380     06EE                     u891:
+  1381     06EE  3001               	movlw	1
+  1382     06EF  2EF1               	goto	u892
+  1383     06F0                     u890:
+  1384     06F0  3000               	movlw	0
+  1385     06F1                     u892:
+  1386     06F1  0673               	xorwf	??_row3,w
+  1387     06F2  1D03               	skipz
+  1388     06F3  2EF5               	goto	u901
+  1389     06F4  2EF6               	goto	u900
+  1390     06F5                     u901:
+  1391     06F5  2F10               	goto	l140
+  1392     06F6                     u900:
+  1393     06F6                     l796:
+  1394                           
+  1395                           ;KEYPAD.c: 180:   {;KEYPAD.c: 181:    send_dat('-');
+  1396     06F6  302D               	movlw	45
+  1397     06F7  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1398     06FC                     l798:	
+  1399                           ;KEYPAD.c: 182:    while(RD7==RD2);
+  1400                           
+  1401     06FC  1283               	bcf	3,5	;RP0=0, select bank0
+  1402     06FD  1303               	bcf	3,6	;RP1=0, select bank0
+  1403     06FE  1908               	btfsc	8,2	;volatile
+  1404     06FF  2F01               	goto	u911
+  1405     0700  2F03               	goto	u910
+  1406     0701                     u911:
+  1407     0701  3001               	movlw	1
+  1408     0702  2F04               	goto	u912
+  1409     0703                     u910:
+  1410     0703  3000               	movlw	0
+  1411     0704                     u912:
+  1412     0704  00F3               	movwf	??_row3
+  1413     0705  1B88               	btfsc	8,7	;volatile
+  1414     0706  2F08               	goto	u921
+  1415     0707  2F0A               	goto	u920
+  1416     0708                     u921:
+  1417     0708  3001               	movlw	1
+  1418     0709  2F0B               	goto	u922
+  1419     070A                     u920:
+  1420     070A  3000               	movlw	0
+  1421     070B                     u922:
+  1422     070B  0673               	xorwf	??_row3,w
+  1423     070C  1903               	skipnz
+  1424     070D  2F0F               	goto	u931
+  1425     070E  2F10               	goto	u930
+  1426     070F                     u931:
+  1427     070F  2EFC               	goto	l798
+  1428     0710                     u930:
+  1429     0710                     l140:
+  1430     0710  0008               	return
+  1431     0711                     __end_of_row3:
+  1432                           
+  1433                           	psect	text7
+  1434     053B                     __ptext7:	
+  1435 ;; *************** function _row2 *****************
+  1436 ;; Defined at:
+  1437 ;;		line 132 in file "KEYPAD.c"
+  1438 ;; Parameters:    Size  Location     Type
+  1439 ;;		None
+  1440 ;; Auto vars:     Size  Location     Type
+  1441 ;;		None
+  1442 ;; Return value:  Size  Location     Type
+  1443 ;;                  1    wreg      void 
+  1444 ;; Registers used:
+  1445 ;;		wreg, status,2, status,0, pclath, cstack
+  1446 ;; Tracked objects:
+  1447 ;;		On entry : 0/0
+  1448 ;;		On exit  : 0/0
+  1449 ;;		Unchanged: 0/0
+  1450 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1451 ;;      Params:         0       0       0       0       0
+  1452 ;;      Locals:         0       0       0       0       0
+  1453 ;;      Temps:          1       0       0       0       0
+  1454 ;;      Totals:         1       0       0       0       0
+  1455 ;;Total ram usage:        1 bytes
+  1456 ;; Hardware stack levels used: 1
+  1457 ;; Hardware stack levels required when called: 1
+  1458 ;; This function calls:
+  1459 ;;		_send_dat
+  1460 ;; This function is called by:
+  1461 ;;		_keypad
+  1462 ;; This function uses a non-reentrant model
+  1463 ;;
+  1464                           
+  1465     053B                     _row2:	
+  1466                           ;psect for function _row2
+  1467                           
+  1468     053B                     l748:	
+  1469                           ;incstack = 0
+  1470                           ; Regs used in _row2: [wreg+status,2+status,0+pclath+cstack]
+  1471                           
+  1472                           
+  1473                           ;KEYPAD.c: 134:    RD4=RD5=RD6=RD7=1;
+  1474     053B  1283               	bcf	3,5	;RP0=0, select bank0
+  1475     053C  1303               	bcf	3,6	;RP1=0, select bank0
+  1476     053D  1788               	bsf	8,7	;volatile
+  1477     053E  1B88               	btfsc	8,7	;volatile
+  1478     053F  2D41               	goto	u321
+  1479     0540  2D45               	goto	u320
+  1480     0541                     u321:
+  1481     0541  1283               	bcf	3,5	;RP0=0, select bank0
+  1482     0542  1303               	bcf	3,6	;RP1=0, select bank0
+  1483     0543  1708               	bsf	8,6	;volatile
+  1484     0544  2D48               	goto	u334
+  1485     0545                     u320:
+  1486     0545  1283               	bcf	3,5	;RP0=0, select bank0
+  1487     0546  1303               	bcf	3,6	;RP1=0, select bank0
+  1488     0547  1308               	bcf	8,6	;volatile
+  1489     0548                     u334:
+  1490     0548  1B08               	btfsc	8,6	;volatile
+  1491     0549  2D4B               	goto	u331
+  1492     054A  2D4F               	goto	u330
+  1493     054B                     u331:
+  1494     054B  1283               	bcf	3,5	;RP0=0, select bank0
+  1495     054C  1303               	bcf	3,6	;RP1=0, select bank0
+  1496     054D  1688               	bsf	8,5	;volatile
+  1497     054E  2D52               	goto	u344
+  1498     054F                     u330:
+  1499     054F  1283               	bcf	3,5	;RP0=0, select bank0
+  1500     0550  1303               	bcf	3,6	;RP1=0, select bank0
+  1501     0551  1288               	bcf	8,5	;volatile
+  1502     0552                     u344:
+  1503     0552  1A88               	btfsc	8,5	;volatile
+  1504     0553  2D55               	goto	u341
+  1505     0554  2D59               	goto	u340
+  1506     0555                     u341:
+  1507     0555  1283               	bcf	3,5	;RP0=0, select bank0
+  1508     0556  1303               	bcf	3,6	;RP1=0, select bank0
+  1509     0557  1608               	bsf	8,4	;volatile
+  1510     0558  2D5C               	goto	u354
+  1511     0559                     u340:
+  1512     0559  1283               	bcf	3,5	;RP0=0, select bank0
+  1513     055A  1303               	bcf	3,6	;RP1=0, select bank0
+  1514     055B  1208               	bcf	8,4	;volatile
+  1515     055C                     u354:
+  1516                           
+  1517                           ;KEYPAD.c: 135:   RD0=RD2=RD3=1;
+  1518     055C  1588               	bsf	8,3	;volatile
+  1519     055D  1988               	btfsc	8,3	;volatile
+  1520     055E  2D60               	goto	u361
+  1521     055F  2D64               	goto	u360
+  1522     0560                     u361:
+  1523     0560  1283               	bcf	3,5	;RP0=0, select bank0
+  1524     0561  1303               	bcf	3,6	;RP1=0, select bank0
+  1525     0562  1508               	bsf	8,2	;volatile
+  1526     0563  2D67               	goto	u374
+  1527     0564                     u360:
+  1528     0564  1283               	bcf	3,5	;RP0=0, select bank0
+  1529     0565  1303               	bcf	3,6	;RP1=0, select bank0
+  1530     0566  1108               	bcf	8,2	;volatile
+  1531     0567                     u374:
+  1532     0567  1908               	btfsc	8,2	;volatile
+  1533     0568  2D6A               	goto	u371
+  1534     0569  2D6E               	goto	u370
+  1535     056A                     u371:
+  1536     056A  1283               	bcf	3,5	;RP0=0, select bank0
+  1537     056B  1303               	bcf	3,6	;RP1=0, select bank0
+  1538     056C  1408               	bsf	8,0	;volatile
+  1539     056D  2D71               	goto	u384
+  1540     056E                     u370:
+  1541     056E  1283               	bcf	3,5	;RP0=0, select bank0
+  1542     056F  1303               	bcf	3,6	;RP1=0, select bank0
+  1543     0570  1008               	bcf	8,0	;volatile
+  1544     0571                     u384:
+  1545                           
+  1546                           ;KEYPAD.c: 136:   RD1=0;
+  1547     0571  1088               	bcf	8,1	;volatile
+  1548     0572                     l750:
+  1549                           
+  1550                           ;KEYPAD.c: 137:   if(RD4==RD1)
+  1551     0572  1888               	btfsc	8,1	;volatile
+  1552     0573  2D75               	goto	u391
+  1553     0574  2D77               	goto	u390
+  1554     0575                     u391:
+  1555     0575  3001               	movlw	1
+  1556     0576  2D78               	goto	u392
+  1557     0577                     u390:
+  1558     0577  3000               	movlw	0
+  1559     0578                     u392:
+  1560     0578  00F3               	movwf	??_row2
+  1561     0579  1A08               	btfsc	8,4	;volatile
+  1562     057A  2D7C               	goto	u401
+  1563     057B  2D7E               	goto	u400
+  1564     057C                     u401:
+  1565     057C  3001               	movlw	1
+  1566     057D  2D7F               	goto	u402
+  1567     057E                     u400:
+  1568     057E  3000               	movlw	0
+  1569     057F                     u402:
+  1570     057F  0673               	xorwf	??_row2,w
+  1571     0580  1D03               	skipz
+  1572     0581  2D83               	goto	u411
+  1573     0582  2D84               	goto	u410
+  1574     0583                     u411:
+  1575     0583  2D9F               	goto	l756
+  1576     0584                     u410:
+  1577     0584                     l752:
+  1578                           
+  1579                           ;KEYPAD.c: 138:   {;KEYPAD.c: 139:    send_dat('4');
+  1580     0584  3034               	movlw	52
+  1581     0585  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1582     058A                     l754:	
+  1583                           ;KEYPAD.c: 140:    while(RD4==RD1);
+  1584                           
+  1585     058A  1283               	bcf	3,5	;RP0=0, select bank0
+  1586     058B  1303               	bcf	3,6	;RP1=0, select bank0
+  1587     058C  1888               	btfsc	8,1	;volatile
+  1588     058D  2D8F               	goto	u421
+  1589     058E  2D91               	goto	u420
+  1590     058F                     u421:
+  1591     058F  3001               	movlw	1
+  1592     0590  2D92               	goto	u422
+  1593     0591                     u420:
+  1594     0591  3000               	movlw	0
+  1595     0592                     u422:
+  1596     0592  00F3               	movwf	??_row2
+  1597     0593  1A08               	btfsc	8,4	;volatile
+  1598     0594  2D96               	goto	u431
+  1599     0595  2D98               	goto	u430
+  1600     0596                     u431:
+  1601     0596  3001               	movlw	1
+  1602     0597  2D99               	goto	u432
+  1603     0598                     u430:
+  1604     0598  3000               	movlw	0
+  1605     0599                     u432:
+  1606     0599  0673               	xorwf	??_row2,w
+  1607     059A  1903               	skipnz
+  1608     059B  2D9D               	goto	u441
+  1609     059C  2D9E               	goto	u440
+  1610     059D                     u441:
+  1611     059D  2D8A               	goto	l754
+  1612     059E                     u440:
+  1613     059E  2E25               	goto	l118
+  1614     059F                     l756:
+  1615     059F  1888               	btfsc	8,1	;volatile
+  1616     05A0  2DA2               	goto	u451
+  1617     05A1  2DA4               	goto	u450
+  1618     05A2                     u451:
+  1619     05A2  3001               	movlw	1
+  1620     05A3  2DA5               	goto	u452
+  1621     05A4                     u450:
+  1622     05A4  3000               	movlw	0
+  1623     05A5                     u452:
+  1624     05A5  00F3               	movwf	??_row2
+  1625     05A6  1A88               	btfsc	8,5	;volatile
+  1626     05A7  2DA9               	goto	u461
+  1627     05A8  2DAB               	goto	u460
+  1628     05A9                     u461:
+  1629     05A9  3001               	movlw	1
+  1630     05AA  2DAC               	goto	u462
+  1631     05AB                     u460:
+  1632     05AB  3000               	movlw	0
+  1633     05AC                     u462:
+  1634     05AC  0673               	xorwf	??_row2,w
+  1635     05AD  1D03               	skipz
+  1636     05AE  2DB0               	goto	u471
+  1637     05AF  2DB1               	goto	u470
+  1638     05B0                     u471:
+  1639     05B0  2DCC               	goto	l762
+  1640     05B1                     u470:
+  1641     05B1                     l758:
+  1642                           
+  1643                           ;KEYPAD.c: 143:   {;KEYPAD.c: 144:    send_dat('5');
+  1644     05B1  3035               	movlw	53
+  1645     05B2  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1646     05B7                     l760:	
+  1647                           ;KEYPAD.c: 145:    while(RD5==RD1);
+  1648                           
+  1649     05B7  1283               	bcf	3,5	;RP0=0, select bank0
+  1650     05B8  1303               	bcf	3,6	;RP1=0, select bank0
+  1651     05B9  1888               	btfsc	8,1	;volatile
+  1652     05BA  2DBC               	goto	u481
+  1653     05BB  2DBE               	goto	u480
+  1654     05BC                     u481:
+  1655     05BC  3001               	movlw	1
+  1656     05BD  2DBF               	goto	u482
+  1657     05BE                     u480:
+  1658     05BE  3000               	movlw	0
+  1659     05BF                     u482:
+  1660     05BF  00F3               	movwf	??_row2
+  1661     05C0  1A88               	btfsc	8,5	;volatile
+  1662     05C1  2DC3               	goto	u491
+  1663     05C2  2DC5               	goto	u490
+  1664     05C3                     u491:
+  1665     05C3  3001               	movlw	1
+  1666     05C4  2DC6               	goto	u492
+  1667     05C5                     u490:
+  1668     05C5  3000               	movlw	0
+  1669     05C6                     u492:
+  1670     05C6  0673               	xorwf	??_row2,w
+  1671     05C7  1903               	skipnz
+  1672     05C8  2DCA               	goto	u501
+  1673     05C9  2DCB               	goto	u500
+  1674     05CA                     u501:
+  1675     05CA  2DB7               	goto	l760
+  1676     05CB                     u500:
+  1677     05CB  2E25               	goto	l118
+  1678     05CC                     l762:
+  1679     05CC  1888               	btfsc	8,1	;volatile
+  1680     05CD  2DCF               	goto	u511
+  1681     05CE  2DD1               	goto	u510
+  1682     05CF                     u511:
+  1683     05CF  3001               	movlw	1
+  1684     05D0  2DD2               	goto	u512
+  1685     05D1                     u510:
+  1686     05D1  3000               	movlw	0
+  1687     05D2                     u512:
+  1688     05D2  00F3               	movwf	??_row2
+  1689     05D3  1B08               	btfsc	8,6	;volatile
+  1690     05D4  2DD6               	goto	u521
+  1691     05D5  2DD8               	goto	u520
+  1692     05D6                     u521:
+  1693     05D6  3001               	movlw	1
+  1694     05D7  2DD9               	goto	u522
+  1695     05D8                     u520:
+  1696     05D8  3000               	movlw	0
+  1697     05D9                     u522:
+  1698     05D9  0673               	xorwf	??_row2,w
+  1699     05DA  1D03               	skipz
+  1700     05DB  2DDD               	goto	u531
+  1701     05DC  2DDE               	goto	u530
+  1702     05DD                     u531:
+  1703     05DD  2DF9               	goto	l768
+  1704     05DE                     u530:
+  1705     05DE                     l764:
+  1706                           
+  1707                           ;KEYPAD.c: 148:   {;KEYPAD.c: 149:    send_dat('6');
+  1708     05DE  3036               	movlw	54
+  1709     05DF  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1710     05E4                     l766:	
+  1711                           ;KEYPAD.c: 150:    while(RD6==RD1);
+  1712                           
+  1713     05E4  1283               	bcf	3,5	;RP0=0, select bank0
+  1714     05E5  1303               	bcf	3,6	;RP1=0, select bank0
+  1715     05E6  1888               	btfsc	8,1	;volatile
+  1716     05E7  2DE9               	goto	u541
+  1717     05E8  2DEB               	goto	u540
+  1718     05E9                     u541:
+  1719     05E9  3001               	movlw	1
+  1720     05EA  2DEC               	goto	u542
+  1721     05EB                     u540:
+  1722     05EB  3000               	movlw	0
+  1723     05EC                     u542:
+  1724     05EC  00F3               	movwf	??_row2
+  1725     05ED  1B08               	btfsc	8,6	;volatile
+  1726     05EE  2DF0               	goto	u551
+  1727     05EF  2DF2               	goto	u550
+  1728     05F0                     u551:
+  1729     05F0  3001               	movlw	1
+  1730     05F1  2DF3               	goto	u552
+  1731     05F2                     u550:
+  1732     05F2  3000               	movlw	0
+  1733     05F3                     u552:
+  1734     05F3  0673               	xorwf	??_row2,w
+  1735     05F4  1903               	skipnz
+  1736     05F5  2DF7               	goto	u561
+  1737     05F6  2DF8               	goto	u560
+  1738     05F7                     u561:
+  1739     05F7  2DE4               	goto	l766
+  1740     05F8                     u560:
+  1741     05F8  2E25               	goto	l118
+  1742     05F9                     l768:
+  1743     05F9  1888               	btfsc	8,1	;volatile
+  1744     05FA  2DFC               	goto	u571
+  1745     05FB  2DFE               	goto	u570
+  1746     05FC                     u571:
+  1747     05FC  3001               	movlw	1
+  1748     05FD  2DFF               	goto	u572
+  1749     05FE                     u570:
+  1750     05FE  3000               	movlw	0
+  1751     05FF                     u572:
+  1752     05FF  00F3               	movwf	??_row2
+  1753     0600  1B88               	btfsc	8,7	;volatile
+  1754     0601  2E03               	goto	u581
+  1755     0602  2E05               	goto	u580
+  1756     0603                     u581:
+  1757     0603  3001               	movlw	1
+  1758     0604  2E06               	goto	u582
+  1759     0605                     u580:
+  1760     0605  3000               	movlw	0
+  1761     0606                     u582:
+  1762     0606  0673               	xorwf	??_row2,w
+  1763     0607  1D03               	skipz
+  1764     0608  2E0A               	goto	u591
+  1765     0609  2E0B               	goto	u590
+  1766     060A                     u591:
+  1767     060A  2E25               	goto	l118
+  1768     060B                     u590:
+  1769     060B                     l770:
+  1770                           
+  1771                           ;KEYPAD.c: 153:   {;KEYPAD.c: 154:    send_dat('*');
+  1772     060B  302A               	movlw	42
+  1773     060C  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1774     0611                     l772:	
+  1775                           ;KEYPAD.c: 155:    while(RD7==RD1);
+  1776                           
+  1777     0611  1283               	bcf	3,5	;RP0=0, select bank0
+  1778     0612  1303               	bcf	3,6	;RP1=0, select bank0
+  1779     0613  1888               	btfsc	8,1	;volatile
+  1780     0614  2E16               	goto	u601
+  1781     0615  2E18               	goto	u600
+  1782     0616                     u601:
+  1783     0616  3001               	movlw	1
+  1784     0617  2E19               	goto	u602
+  1785     0618                     u600:
+  1786     0618  3000               	movlw	0
+  1787     0619                     u602:
+  1788     0619  00F3               	movwf	??_row2
+  1789     061A  1B88               	btfsc	8,7	;volatile
+  1790     061B  2E1D               	goto	u611
+  1791     061C  2E1F               	goto	u610
+  1792     061D                     u611:
+  1793     061D  3001               	movlw	1
+  1794     061E  2E20               	goto	u612
+  1795     061F                     u610:
+  1796     061F  3000               	movlw	0
+  1797     0620                     u612:
+  1798     0620  0673               	xorwf	??_row2,w
+  1799     0621  1903               	skipnz
+  1800     0622  2E24               	goto	u621
+  1801     0623  2E25               	goto	u620
+  1802     0624                     u621:
+  1803     0624  2E11               	goto	l772
+  1804     0625                     u620:
+  1805     0625                     l118:
+  1806     0625  0008               	return
+  1807     0626                     __end_of_row2:
+  1808                           
+  1809                           	psect	text8
+  1810     0450                     __ptext8:	
+  1811 ;; *************** function _row1 *****************
+  1812 ;; Defined at:
+  1813 ;;		line 105 in file "KEYPAD.c"
+  1814 ;; Parameters:    Size  Location     Type
+  1815 ;;		None
+  1816 ;; Auto vars:     Size  Location     Type
+  1817 ;;		None
+  1818 ;; Return value:  Size  Location     Type
+  1819 ;;                  1    wreg      void 
+  1820 ;; Registers used:
+  1821 ;;		wreg, status,2, status,0, pclath, cstack
+  1822 ;; Tracked objects:
+  1823 ;;		On entry : 0/0
+  1824 ;;		On exit  : 0/0
+  1825 ;;		Unchanged: 0/0
+  1826 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1827 ;;      Params:         0       0       0       0       0
+  1828 ;;      Locals:         0       0       0       0       0
+  1829 ;;      Temps:          1       0       0       0       0
+  1830 ;;      Totals:         1       0       0       0       0
+  1831 ;;Total ram usage:        1 bytes
+  1832 ;; Hardware stack levels used: 1
+  1833 ;; Hardware stack levels required when called: 1
+  1834 ;; This function calls:
+  1835 ;;		_send_dat
+  1836 ;; This function is called by:
+  1837 ;;		_keypad
+  1838 ;; This function uses a non-reentrant model
+  1839 ;;
+  1840                           
+  1841     0450                     _row1:	
+  1842                           ;psect for function _row1
+  1843                           
+  1844     0450                     l722:	
+  1845                           ;incstack = 0
+  1846                           ; Regs used in _row1: [wreg+status,2+status,0+pclath+cstack]
+  1847                           
+  1848                           
+  1849                           ;KEYPAD.c: 107:    RD4=RD5=RD6=RD7=1;
+  1850     0450  1283               	bcf	3,5	;RP0=0, select bank0
+  1851     0451  1303               	bcf	3,6	;RP1=0, select bank0
+  1852     0452  1788               	bsf	8,7	;volatile
+  1853     0453  1B88               	btfsc	8,7	;volatile
+  1854     0454  2C56               	goto	u11
+  1855     0455  2C5A               	goto	u10
+  1856     0456                     u11:
+  1857     0456  1283               	bcf	3,5	;RP0=0, select bank0
+  1858     0457  1303               	bcf	3,6	;RP1=0, select bank0
+  1859     0458  1708               	bsf	8,6	;volatile
+  1860     0459  2C5D               	goto	u24
+  1861     045A                     u10:
+  1862     045A  1283               	bcf	3,5	;RP0=0, select bank0
+  1863     045B  1303               	bcf	3,6	;RP1=0, select bank0
+  1864     045C  1308               	bcf	8,6	;volatile
+  1865     045D                     u24:
+  1866     045D  1B08               	btfsc	8,6	;volatile
+  1867     045E  2C60               	goto	u21
+  1868     045F  2C64               	goto	u20
+  1869     0460                     u21:
+  1870     0460  1283               	bcf	3,5	;RP0=0, select bank0
+  1871     0461  1303               	bcf	3,6	;RP1=0, select bank0
+  1872     0462  1688               	bsf	8,5	;volatile
+  1873     0463  2C67               	goto	u34
+  1874     0464                     u20:
+  1875     0464  1283               	bcf	3,5	;RP0=0, select bank0
+  1876     0465  1303               	bcf	3,6	;RP1=0, select bank0
+  1877     0466  1288               	bcf	8,5	;volatile
+  1878     0467                     u34:
+  1879     0467  1A88               	btfsc	8,5	;volatile
+  1880     0468  2C6A               	goto	u31
+  1881     0469  2C6E               	goto	u30
+  1882     046A                     u31:
+  1883     046A  1283               	bcf	3,5	;RP0=0, select bank0
+  1884     046B  1303               	bcf	3,6	;RP1=0, select bank0
+  1885     046C  1608               	bsf	8,4	;volatile
+  1886     046D  2C71               	goto	u44
+  1887     046E                     u30:
+  1888     046E  1283               	bcf	3,5	;RP0=0, select bank0
+  1889     046F  1303               	bcf	3,6	;RP1=0, select bank0
+  1890     0470  1208               	bcf	8,4	;volatile
+  1891     0471                     u44:
+  1892                           
+  1893                           ;KEYPAD.c: 108:   RD1=RD2=RD3=1;
+  1894     0471  1588               	bsf	8,3	;volatile
+  1895     0472  1988               	btfsc	8,3	;volatile
+  1896     0473  2C75               	goto	u51
+  1897     0474  2C79               	goto	u50
+  1898     0475                     u51:
+  1899     0475  1283               	bcf	3,5	;RP0=0, select bank0
+  1900     0476  1303               	bcf	3,6	;RP1=0, select bank0
+  1901     0477  1508               	bsf	8,2	;volatile
+  1902     0478  2C7C               	goto	u64
+  1903     0479                     u50:
+  1904     0479  1283               	bcf	3,5	;RP0=0, select bank0
+  1905     047A  1303               	bcf	3,6	;RP1=0, select bank0
+  1906     047B  1108               	bcf	8,2	;volatile
+  1907     047C                     u64:
+  1908     047C  1908               	btfsc	8,2	;volatile
+  1909     047D  2C7F               	goto	u61
+  1910     047E  2C83               	goto	u60
+  1911     047F                     u61:
+  1912     047F  1283               	bcf	3,5	;RP0=0, select bank0
+  1913     0480  1303               	bcf	3,6	;RP1=0, select bank0
+  1914     0481  1488               	bsf	8,1	;volatile
+  1915     0482  2C86               	goto	u74
+  1916     0483                     u60:
+  1917     0483  1283               	bcf	3,5	;RP0=0, select bank0
+  1918     0484  1303               	bcf	3,6	;RP1=0, select bank0
+  1919     0485  1088               	bcf	8,1	;volatile
+  1920     0486                     u74:
+  1921                           
+  1922                           ;KEYPAD.c: 109:   RD0=0;
+  1923     0486  1008               	bcf	8,0	;volatile
+  1924     0487                     l724:
+  1925                           
+  1926                           ;KEYPAD.c: 110:   if(RD4==RD0)
+  1927     0487  1808               	btfsc	8,0	;volatile
+  1928     0488  2C8A               	goto	u81
+  1929     0489  2C8C               	goto	u80
+  1930     048A                     u81:
+  1931     048A  3001               	movlw	1
+  1932     048B  2C8D               	goto	u82
+  1933     048C                     u80:
+  1934     048C  3000               	movlw	0
+  1935     048D                     u82:
+  1936     048D  00F3               	movwf	??_row1
+  1937     048E  1A08               	btfsc	8,4	;volatile
+  1938     048F  2C91               	goto	u91
+  1939     0490  2C93               	goto	u90
+  1940     0491                     u91:
+  1941     0491  3001               	movlw	1
+  1942     0492  2C94               	goto	u92
+  1943     0493                     u90:
+  1944     0493  3000               	movlw	0
+  1945     0494                     u92:
+  1946     0494  0673               	xorwf	??_row1,w
+  1947     0495  1D03               	skipz
+  1948     0496  2C98               	goto	u101
+  1949     0497  2C99               	goto	u100
+  1950     0498                     u101:
+  1951     0498  2CB4               	goto	l730
+  1952     0499                     u100:
+  1953     0499                     l726:
+  1954                           
+  1955                           ;KEYPAD.c: 111:   {;KEYPAD.c: 112:    send_dat('7');
+  1956     0499  3037               	movlw	55
+  1957     049A  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  1958     049F                     l728:	
+  1959                           ;KEYPAD.c: 113:    while(RD4==RD0);
+  1960                           
+  1961     049F  1283               	bcf	3,5	;RP0=0, select bank0
+  1962     04A0  1303               	bcf	3,6	;RP1=0, select bank0
+  1963     04A1  1808               	btfsc	8,0	;volatile
+  1964     04A2  2CA4               	goto	u111
+  1965     04A3  2CA6               	goto	u110
+  1966     04A4                     u111:
+  1967     04A4  3001               	movlw	1
+  1968     04A5  2CA7               	goto	u112
+  1969     04A6                     u110:
+  1970     04A6  3000               	movlw	0
+  1971     04A7                     u112:
+  1972     04A7  00F3               	movwf	??_row1
+  1973     04A8  1A08               	btfsc	8,4	;volatile
+  1974     04A9  2CAB               	goto	u121
+  1975     04AA  2CAD               	goto	u120
+  1976     04AB                     u121:
+  1977     04AB  3001               	movlw	1
+  1978     04AC  2CAE               	goto	u122
+  1979     04AD                     u120:
+  1980     04AD  3000               	movlw	0
+  1981     04AE                     u122:
+  1982     04AE  0673               	xorwf	??_row1,w
+  1983     04AF  1903               	skipnz
+  1984     04B0  2CB2               	goto	u131
+  1985     04B1  2CB3               	goto	u130
+  1986     04B2                     u131:
+  1987     04B2  2C9F               	goto	l728
+  1988     04B3                     u130:
+  1989     04B3  2D3A               	goto	l96
+  1990     04B4                     l730:
+  1991     04B4  1808               	btfsc	8,0	;volatile
+  1992     04B5  2CB7               	goto	u141
+  1993     04B6  2CB9               	goto	u140
+  1994     04B7                     u141:
+  1995     04B7  3001               	movlw	1
+  1996     04B8  2CBA               	goto	u142
+  1997     04B9                     u140:
+  1998     04B9  3000               	movlw	0
+  1999     04BA                     u142:
+  2000     04BA  00F3               	movwf	??_row1
+  2001     04BB  1A88               	btfsc	8,5	;volatile
+  2002     04BC  2CBE               	goto	u151
+  2003     04BD  2CC0               	goto	u150
+  2004     04BE                     u151:
+  2005     04BE  3001               	movlw	1
+  2006     04BF  2CC1               	goto	u152
+  2007     04C0                     u150:
+  2008     04C0  3000               	movlw	0
+  2009     04C1                     u152:
+  2010     04C1  0673               	xorwf	??_row1,w
+  2011     04C2  1D03               	skipz
+  2012     04C3  2CC5               	goto	u161
+  2013     04C4  2CC6               	goto	u160
+  2014     04C5                     u161:
+  2015     04C5  2CE1               	goto	l736
+  2016     04C6                     u160:
+  2017     04C6                     l732:
+  2018                           
+  2019                           ;KEYPAD.c: 116:   {;KEYPAD.c: 117:    send_dat('8');
+  2020     04C6  3038               	movlw	56
+  2021     04C7  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  2022     04CC                     l734:	
+  2023                           ;KEYPAD.c: 118:    while(RD5==RD0);
+  2024                           
+  2025     04CC  1283               	bcf	3,5	;RP0=0, select bank0
+  2026     04CD  1303               	bcf	3,6	;RP1=0, select bank0
+  2027     04CE  1808               	btfsc	8,0	;volatile
+  2028     04CF  2CD1               	goto	u171
+  2029     04D0  2CD3               	goto	u170
+  2030     04D1                     u171:
+  2031     04D1  3001               	movlw	1
+  2032     04D2  2CD4               	goto	u172
+  2033     04D3                     u170:
+  2034     04D3  3000               	movlw	0
+  2035     04D4                     u172:
+  2036     04D4  00F3               	movwf	??_row1
+  2037     04D5  1A88               	btfsc	8,5	;volatile
+  2038     04D6  2CD8               	goto	u181
+  2039     04D7  2CDA               	goto	u180
+  2040     04D8                     u181:
+  2041     04D8  3001               	movlw	1
+  2042     04D9  2CDB               	goto	u182
+  2043     04DA                     u180:
+  2044     04DA  3000               	movlw	0
+  2045     04DB                     u182:
+  2046     04DB  0673               	xorwf	??_row1,w
+  2047     04DC  1903               	skipnz
+  2048     04DD  2CDF               	goto	u191
+  2049     04DE  2CE0               	goto	u190
+  2050     04DF                     u191:
+  2051     04DF  2CCC               	goto	l734
+  2052     04E0                     u190:
+  2053     04E0  2D3A               	goto	l96
+  2054     04E1                     l736:
+  2055     04E1  1808               	btfsc	8,0	;volatile
+  2056     04E2  2CE4               	goto	u201
+  2057     04E3  2CE6               	goto	u200
+  2058     04E4                     u201:
+  2059     04E4  3001               	movlw	1
+  2060     04E5  2CE7               	goto	u202
+  2061     04E6                     u200:
+  2062     04E6  3000               	movlw	0
+  2063     04E7                     u202:
+  2064     04E7  00F3               	movwf	??_row1
+  2065     04E8  1B08               	btfsc	8,6	;volatile
+  2066     04E9  2CEB               	goto	u211
+  2067     04EA  2CED               	goto	u210
+  2068     04EB                     u211:
+  2069     04EB  3001               	movlw	1
+  2070     04EC  2CEE               	goto	u212
+  2071     04ED                     u210:
+  2072     04ED  3000               	movlw	0
+  2073     04EE                     u212:
+  2074     04EE  0673               	xorwf	??_row1,w
+  2075     04EF  1D03               	skipz
+  2076     04F0  2CF2               	goto	u221
+  2077     04F1  2CF3               	goto	u220
+  2078     04F2                     u221:
+  2079     04F2  2D0E               	goto	l742
+  2080     04F3                     u220:
+  2081     04F3                     l738:
+  2082                           
+  2083                           ;KEYPAD.c: 121:   {;KEYPAD.c: 122:    send_dat('9');
+  2084     04F3  3039               	movlw	57
+  2085     04F4  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  2086     04F9                     l740:	
+  2087                           ;KEYPAD.c: 123:    while(RD6==RD0);
+  2088                           
+  2089     04F9  1283               	bcf	3,5	;RP0=0, select bank0
+  2090     04FA  1303               	bcf	3,6	;RP1=0, select bank0
+  2091     04FB  1808               	btfsc	8,0	;volatile
+  2092     04FC  2CFE               	goto	u231
+  2093     04FD  2D00               	goto	u230
+  2094     04FE                     u231:
+  2095     04FE  3001               	movlw	1
+  2096     04FF  2D01               	goto	u232
+  2097     0500                     u230:
+  2098     0500  3000               	movlw	0
+  2099     0501                     u232:
+  2100     0501  00F3               	movwf	??_row1
+  2101     0502  1B08               	btfsc	8,6	;volatile
+  2102     0503  2D05               	goto	u241
+  2103     0504  2D07               	goto	u240
+  2104     0505                     u241:
+  2105     0505  3001               	movlw	1
+  2106     0506  2D08               	goto	u242
+  2107     0507                     u240:
+  2108     0507  3000               	movlw	0
+  2109     0508                     u242:
+  2110     0508  0673               	xorwf	??_row1,w
+  2111     0509  1903               	skipnz
+  2112     050A  2D0C               	goto	u251
+  2113     050B  2D0D               	goto	u250
+  2114     050C                     u251:
+  2115     050C  2CF9               	goto	l740
+  2116     050D                     u250:
+  2117     050D  2D3A               	goto	l96
+  2118     050E                     l742:
+  2119     050E  1808               	btfsc	8,0	;volatile
+  2120     050F  2D11               	goto	u261
+  2121     0510  2D13               	goto	u260
+  2122     0511                     u261:
+  2123     0511  3001               	movlw	1
+  2124     0512  2D14               	goto	u262
+  2125     0513                     u260:
+  2126     0513  3000               	movlw	0
+  2127     0514                     u262:
+  2128     0514  00F3               	movwf	??_row1
+  2129     0515  1B88               	btfsc	8,7	;volatile
+  2130     0516  2D18               	goto	u271
+  2131     0517  2D1A               	goto	u270
+  2132     0518                     u271:
+  2133     0518  3001               	movlw	1
+  2134     0519  2D1B               	goto	u272
+  2135     051A                     u270:
+  2136     051A  3000               	movlw	0
+  2137     051B                     u272:
+  2138     051B  0673               	xorwf	??_row1,w
+  2139     051C  1D03               	skipz
+  2140     051D  2D1F               	goto	u281
+  2141     051E  2D20               	goto	u280
+  2142     051F                     u281:
+  2143     051F  2D3A               	goto	l96
+  2144     0520                     u280:
+  2145     0520                     l744:
+  2146                           
+  2147                           ;KEYPAD.c: 126:   {;KEYPAD.c: 127:    send_dat('/');
+  2148     0520  302F               	movlw	47
+  2149     0521  120A  118A  23AB  120A  118A  	fcall	_send_dat
+  2150     0526                     l746:	
+  2151                           ;KEYPAD.c: 128:    while(RD7==RD0);
+  2152                           
+  2153     0526  1283               	bcf	3,5	;RP0=0, select bank0
+  2154     0527  1303               	bcf	3,6	;RP1=0, select bank0
+  2155     0528  1808               	btfsc	8,0	;volatile
+  2156     0529  2D2B               	goto	u291
+  2157     052A  2D2D               	goto	u290
+  2158     052B                     u291:
+  2159     052B  3001               	movlw	1
+  2160     052C  2D2E               	goto	u292
+  2161     052D                     u290:
+  2162     052D  3000               	movlw	0
+  2163     052E                     u292:
+  2164     052E  00F3               	movwf	??_row1
+  2165     052F  1B88               	btfsc	8,7	;volatile
+  2166     0530  2D32               	goto	u301
+  2167     0531  2D34               	goto	u300
+  2168     0532                     u301:
+  2169     0532  3001               	movlw	1
+  2170     0533  2D35               	goto	u302
+  2171     0534                     u300:
+  2172     0534  3000               	movlw	0
+  2173     0535                     u302:
+  2174     0535  0673               	xorwf	??_row1,w
+  2175     0536  1903               	skipnz
+  2176     0537  2D39               	goto	u311
+  2177     0538  2D3A               	goto	u310
+  2178     0539                     u311:
+  2179     0539  2D26               	goto	l746
+  2180     053A                     u310:
+  2181     053A                     l96:
+  2182     053A  0008               	return
+  2183     053B                     __end_of_row1:
+  2184                           
+  2185                           	psect	text9
+  2186     03AB                     __ptext9:	
+  2187 ;; *************** function _send_dat *****************
+  2188 ;; Defined at:
+  2189 ;;		line 77 in file "KEYPAD.c"
+  2190 ;; Parameters:    Size  Location     Type
+  2191 ;;  b               1    wreg     unsigned char 
+  2192 ;; Auto vars:     Size  Location     Type
+  2193 ;;  b               1    2[COMMON] unsigned char 
+  2194 ;; Return value:  Size  Location     Type
+  2195 ;;                  1    wreg      void 
+  2196 ;; Registers used:
+  2197 ;;		wreg
+  2198 ;; Tracked objects:
+  2199 ;;		On entry : 0/0
+  2200 ;;		On exit  : 0/0
+  2201 ;;		Unchanged: 0/0
+  2202 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2203 ;;      Params:         0       0       0       0       0
+  2204 ;;      Locals:         1       0       0       0       0
+  2205 ;;      Temps:          2       0       0       0       0
+  2206 ;;      Totals:         3       0       0       0       0
+  2207 ;;Total ram usage:        3 bytes
+  2208 ;; Hardware stack levels used: 1
+  2209 ;; This function calls:
+  2210 ;;		Nothing
+  2211 ;; This function is called by:
+  2212 ;;		_show_dat
+  2213 ;;		_row1
+  2214 ;;		_row2
+  2215 ;;		_row3
+  2216 ;;		_row4
+  2217 ;; This function uses a non-reentrant model
+  2218 ;;
+  2219                           
+  2220     03AB                     _send_dat:	
+  2221                           ;psect for function _send_dat
+  2222                           
+  2223                           
+  2224                           ;incstack = 0
+  2225                           ; Regs used in _send_dat: [wreg]
+  2226                           ;send_dat@b stored from wreg
+  2227     03AB  00F2               	movwf	send_dat@b
+  2228     03AC                     l714:
+  2229                           
+  2230                           ;KEYPAD.c: 77: void send_dat(unsigned char b);KEYPAD.c: 78:  {;KEYPAD.c: 79:   PORTB=b;
+  2231     03AC  0872               	movf	send_dat@b,w
+  2232     03AD  1283               	bcf	3,5	;RP0=0, select bank0
+  2233     03AE  1303               	bcf	3,6	;RP1=0, select bank0
+  2234     03AF  0086               	movwf	6	;volatile
+  2235     03B0                     l716:
+  2236                           
+  2237                           ;KEYPAD.c: 80:   RC0=1;
+  2238     03B0  1407               	bsf	7,0	;volatile
+  2239     03B1                     l718:
+  2240                           
+  2241                           ;KEYPAD.c: 82:   RC1=1;
+  2242     03B1  1487               	bsf	7,1	;volatile
+  2243                           
+  2244                           ;KEYPAD.c: 83:   _delay((unsigned long)((10)*(20000000/4000.0)));
+  2245     03B2  3041               	movlw	65
+  2246     03B3  00F1               	movwf	??_send_dat+1
+  2247     03B4  30EE               	movlw	238
+  2248     03B5  00F0               	movwf	??_send_dat
+  2249     03B6                     u1287:
+  2250     03B6  0BF0               	decfsz	??_send_dat,f
+  2251     03B7  2BB6               	goto	u1287
+  2252     03B8  0BF1               	decfsz	??_send_dat+1,f
+  2253     03B9  2BB6               	goto	u1287
+  2254     03BA  0000               	nop
+  2255     03BB                     l720:
+  2256                           
+  2257                           ;KEYPAD.c: 84:   RC1=0;
+  2258     03BB  1283               	bcf	3,5	;RP0=0, select bank0
+  2259     03BC  1303               	bcf	3,6	;RP1=0, select bank0
+  2260     03BD  1087               	bcf	7,1	;volatile
+  2261     03BE                     l65:
+  2262     03BE  0008               	return
+  2263     03BF                     __end_of_send_dat:
+  2264     0002                     ___latbits      equ	2
+  2265     007E                     btemp           set	126	;btemp
+  2266     007E                     btemp0          set	126
+  2267     007F                     btemp1          set	127
+  2268     007E                     wtemp0          set	126
+  2269     007F                     wtemp0a         set	127
+  2270     007F                     ttemp0a         set	127
+  2271     0080                     ltemp0a         set	128
+  2272                           
+  2273                           	psect	config
+  2274                           
+  2275                           ;Config register CONFIG @ 0x2007
+  2276                           ;	Oscillator Selection bits
+  2277                           ;	FOSC = HS, HS oscillator
+  2278                           ;	Watchdog Timer Enable bit
+  2279                           ;	WDTE = OFF, WDT disabled
+  2280                           ;	Power-up Timer Enable bit
+  2281                           ;	PWRTE = OFF, PWRT disabled
+  2282                           ;	Brown-out Reset Enable bit
+  2283                           ;	BOREN = OFF, BOR disabled
+  2284                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+  2285                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+  2286                           ;	Data EEPROM Memory Code Protection bit
+  2287                           ;	CPD = OFF, Data EEPROM code protection off
+  2288                           ;	Flash Program Memory Write Enable bits
+  2289                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+  2290                           ;	In-Circuit Debugger Mode bit
+  2291                           ;	DEBUG = 0x1, unprogrammed default
+  2292                           ;	Flash Program Memory Code Protection bit
+  2293                           ;	CP = OFF, Code protection off
+  2294     2007                     	org	8199
+  2295     2007  3F3A               	dw	16186
+
+Data Sizes:
+    Strings     17
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      4       4
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    show_dat@s	PTR unsigned char  size(1) Largest target is 17
+		 -> STR_1(CODE[17]), 
+
+
+Critical Paths under _main in COMMON
+
+    _main->_show_dat
+    _show_dat->_send_dat
+    _lcd_init->_send_cmd
+    _keypad->_row1
+    _keypad->_row2
+    _keypad->_row3
+    _keypad->_row4
+    _row4->_send_cmd
+    _row4->_send_dat
+    _row3->_send_dat
+    _row2->_send_dat
+    _row1->_send_dat
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     166
+                             _keypad
+                           _lcd_init
+                           _send_cmd
+                           _show_dat
+ ---------------------------------------------------------------------------------
+ (1) _show_dat                                             1     0      1      61
+                                              3 COMMON     1     0      1
+                           _send_dat
+ ---------------------------------------------------------------------------------
+ (1) _lcd_init                                             0     0      0      15
+                           _send_cmd
+ ---------------------------------------------------------------------------------
+ (1) _keypad                                               0     0      0      75
+                               _row1
+                               _row2
+                               _row3
+                               _row4
+ ---------------------------------------------------------------------------------
+ (2) _row4                                                 1     1      0      30
+                                              3 COMMON     1     1      0
+                           _send_cmd
+                           _send_dat
+ ---------------------------------------------------------------------------------
+ (3) _send_cmd                                             3     3      0      15
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ (2) _row3                                                 1     1      0      15
+                                              3 COMMON     1     1      0
+                           _send_dat
+ ---------------------------------------------------------------------------------
+ (2) _row2                                                 1     1      0      15
+                                              3 COMMON     1     1      0
+                           _send_dat
+ ---------------------------------------------------------------------------------
+ (2) _row1                                                 1     1      0      15
+                                              3 COMMON     1     1      0
+                           _send_dat
+ ---------------------------------------------------------------------------------
+ (3) _send_dat                                             3     3      0      15
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _keypad
+     _row1
+       _send_dat
+     _row2
+       _send_dat
+     _row3
+       _send_dat
+     _row4
+       _send_cmd
+       _send_dat
+   _lcd_init
+     _send_cmd
+   _send_cmd
+   _show_dat
+     _send_dat
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON           14      0       0      0.0%
+BITBANK0            80      0       0      0.0%
+BITBANK1            80      0       0      0.0%
+BITBANK3            96      0       0      0.0%
+BITBANK2            96      0       0      0.0%
+COMMON              14      4       4     28.6%
+BANK0               80      0       0      0.0%
+BANK1               80      0       0      0.0%
+BANK3               96      0       0      0.0%
+BANK2               96      0       0      0.0%
+STACK                0      0       0      0.0%
+DATA                 0      0       4      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
+Symbol Table                                                                                   Tue Nov  4 11:28:05 2025
+
+                      pc 0002                       l62 03D2                       l71 0403  
+                     l65 03BE                       l74 03E7                       l59 0428  
+                     l96 053A                       u10 045A                       u11 0456  
+                     u20 0464                       u21 0460                       u30 046E  
+                     u31 046A                       u24 045D                       u50 0479  
+                     u34 0467                       u51 0475                       u60 0483  
+                     u44 0471                       u61 047F                       u80 048C  
+                     u64 047C                       u81 048A                       u90 0493  
+                     u82 048D                       u74 0486                       u91 0491  
+                     u92 0494                       fsr 0004                      l140 0710  
+                    l118 0625                      l162 07FB                      l710 03C5  
+                    l720 03BB                      l712 03CF                      l800 0711  
+                    l714 03AC                      l730 04B4                      l722 0450  
+                    l706 03C0                      l810 0787                      l802 0748  
+                    l716 03B0                      l740 04F9                      l732 04C6  
+                    l724 0487                      l708 03C4                      l820 07CF  
+                    l812 078D                      l804 075A                      l718 03B1  
+                    l742 050E                      l734 04CC                      l726 0499  
+                    l750 0572                      l822 07E1                      l814 07A2  
+                    l806 0760                      l744 0520                      l736 04E1  
+                    l728 049F                      l760 05B7                      l752 0584  
+                    l824 07E7                      l816 07B4                      l808 0775  
+                    l746 0526                      l738 04F3                      l770 060B  
+                    l762 05CC                      l754 058A                      l818 07BA  
+                    l826 0404                      l772 0611                      l764 05DE  
+                    l756 059F                      l748 053B                      l780 0675  
+                    l836 03D3                      l860 03F7                      l766 05E4  
+                    l758 05B1                      l790 06C9                      l782 068A  
+                    l774 0626                      l854 03E8                      l870 0434  
+                    l862 0429                      l768 05F9                      l792 06CF  
+                    l784 069C                      l776 065D                      l856 03E9  
+                    l872 043A                      l864 042C                      l794 06E4  
+                    l786 06A2                      l778 066F                      l858 03F5  
+                    l874 0441                      l866 042D                      l796 06F6  
+                    l788 06B7                      l876 0447                      l868 042F  
+                    l798 06FC                      _RC0 0038                      _RC1 0039  
+                    _RD0 0040                      _RD1 0041                      _RD2 0042  
+                    _RD3 0043                      u100 0499                      _RD4 0044  
+                    u101 0498                      _RD5 0045                      u110 04A6  
+                    _RD6 0046                      u111 04A4                      _RD7 0047  
+                    u200 04E6                      u120 04AD                      u112 04A7  
+                    u201 04E4                      u121 04AB                      u210 04ED  
+                    u202 04E7                      u130 04B3                      u122 04AE  
+                    u211 04EB                      u131 04B2                      u300 0534  
+                    u220 04F3                      u212 04EE                      u140 04B9  
+                    u301 0532                      u221 04F2                      u141 04B7  
+                    u310 053A                      u302 0535                      u230 0500  
+                    u150 04C0                      u142 04BA                      u311 0539  
+                    u231 04FE                      u151 04BE                      u240 0507  
+                    u232 0501                      u160 04C6                      u152 04C1  
+                    u400 057E                      u320 0545                      u241 0505  
+                    u161 04C5                      u401 057C                      u321 0541  
+                    u250 050D                      u242 0508                      u170 04D3  
+                    u410 0584                      u402 057F                      u330 054F  
+                    u251 050C                      u171 04D1                      u411 0583  
+                    u331 054B                      u260 0513                      u180 04DA  
+                    u172 04D4                      u500 05CB                      u420 0591  
+                    u340 0559                      u261 0511                      u181 04D8  
+                    u501 05CA                      u421 058F                      u341 0555  
+                    u270 051A                      u262 0514                      u190 04E0  
+                    u182 04DB                      u510 05D1                      u430 0598  
+                    u422 0592                      u334 0548                      u271 0518  
+                    u191 04DF                      u511 05CF                      u431 0596  
+                    u280 0520                      u272 051B                      u600 0618  
+                    u520 05D8                      u512 05D2                      u440 059E  
+                    u432 0599                      u360 0564                      u344 0552  
+                    u281 051F                      u601 0616                      u521 05D6  
+                    u441 059D                      u361 0560                      u290 052D  
+                    u610 061F                      u602 0619                      u530 05DE  
+                    u522 05D9                      u450 05A4                      u370 056E  
+                    u354 055C                      u291 052B                      u611 061D  
+                    u531 05DD                      u451 05A2                      u371 056A  
+                    u292 052E                      u620 0625                      u612 0620  
+                    u540 05EB                      u460 05AB                      u452 05A5  
+                    u700 0662                      u621 0624                      u541 05E9  
+                    u461 05A9                      u701 0660                      u550 05F2  
+                    u542 05EC                      u470 05B1                      u462 05AC  
+                    u390 0577                      u374 0567                      u710 0669  
+                    u702 0663                      u630 0630                      u551 05F0  
+                    u471 05B0                      u391 0575                      u711 0667  
+                    u631 062C                      u560 05F8                      u552 05F3  
+                    u480 05BE                      u392 0578                      u384 0571  
+                    u800 06B0                      u720 066F                      u712 066A  
+                    u640 063A                      u561 05F7                      u481 05BC  
+                    u801 06AE                      u721 066E                      u641 0636  
+                    u570 05FE                      u490 05C5                      u482 05BF  
+                    u810 06B6                      u802 06B1                      u730 067C  
+                    u650 0644                      u571 05FC                      u491 05C3  
+                    u811 06B5                      u731 067A                      u651 0640  
+                    u580 0605                      u572 05FF                      u492 05C6  
+                    u900 06F6                      u820 06BC                      u740 0683  
+                    u732 067D                      u644 0633                      u581 0603  
+                    u901 06F5                      u821 06BA                      u741 0681  
+                    u590 060B                      u582 0606                      u910 0703  
+                    u830 06C3                      u822 06BD                      u750 0689  
+                    u742 0684                      u670 064F                      u654 063D  
+                    u591 060A                      u911 0701                      u831 06C1  
+                    u751 0688                      u671 064B                      u920 070A  
+                    u912 0704                      u840 06C9                      u832 06C4  
+                    u760 068F                      u680 0659                      u664 0647  
+                    u921 0708                      u841 06C8                      u761 068D  
+                    u681 0655                      u930 0710                      u922 070B  
+                    u850 06D6                      u770 0696                      u762 0690  
+                    u931 070F                      u851 06D4                      u771 0694  
+                    u860 06DD                      u852 06D7                      u780 069C  
+                    u772 0697                      u684 0652                      u940 071B  
+                    u861 06DB                      u781 069B                      u941 0717  
+                    u870 06E3                      u862 06DE                      u790 06A9  
+                    u694 065C                      u950 0725                      u871 06E2  
+                    u791 06A7                      u951 0721                      u880 06E9  
+                    u792 06AA                      u960 072F                      u881 06E7  
+                    u961 072B                      u890 06F0                      u882 06EA  
+                    u954 071E                      u891 06EE                      u892 06F1  
+                    u980 073A                      u964 0728                      u981 0736  
+                    u990 0744                      u974 0732                      u991 0740  
+                    u994 073D                      fsr0 0004                     STR_1 0009  
+                   u1010 074D                     u1011 074B                     u1100 0794  
+                   u1020 0754                     u1012 074E                     u1004 0747  
+                   u1101 0792                     u1021 0752                     u1110 079B  
+                   u1102 0795                     u1030 075A                     u1022 0755  
+                   u1111 0799                     u1031 0759                     u1200 07DB  
+                   u1120 07A1                     u1112 079C                     u1040 0767  
+                   u1201 07D9                     u1121 07A0                     u1041 0765  
+                   u1210 07E1                     u1202 07DC                     u1130 07A7  
+                   u1050 076E                     u1042 0768                     u1211 07E0  
+                   u1131 07A5                     u1051 076C                     u1220 07EE  
+                   u1140 07AE                     u1132 07A8                     u1060 0774  
+                   u1052 076F                     u1221 07EC                     u1141 07AC  
+                   u1061 0773                     u1230 07F5                     u1222 07EF  
+                   u1150 07B4                     u1142 07AF                     u1070 077A  
+                   u1231 07F3                     u1151 07B3                     u1071 0778  
+                   u1240 07FB                     u1232 07F6                     u1160 07C1  
+                   u1080 0781                     u1072 077B                     u1241 07FA  
+                   u1161 07BF                     u1081 077F                     u1170 07C8  
+                   u1162 07C2                     u1090 0787                     u1082 0782  
+                   u1171 07C6                     u1091 0786                     u1180 07CE  
+                   u1172 07C9                     u1260 0403                     u1181 07CD  
+                   u1261 0402                     u1190 07D4                     u1191 07D2  
+                   u1192 07D5                     u1277 03CA                     u1287 03B6  
+                   _main 0429                     _row1 0450                     _row2 053B  
+                   _row3 0626                     _row4 0711                     btemp 007E  
+                   start 0000                    ?_main 0070                    ?_row1 0070  
+                  ?_row2 0070                    ?_row3 0070                    ?_row4 0070  
+                  _PORTB 0006                    _TRISB 0086                    _TRISD 0088  
+                  btemp0 007E                    btemp1 007F                    pclath 000A  
+                  status 0003                    wtemp0 007E          __initialization 07FC  
+           __end_of_main 0450             __end_of_row1 053B             __end_of_row2 0626  
+           __end_of_row3 0711             __end_of_row4 07FC                   ??_main 0074  
+                 ??_row1 0073                   ??_row2 0073                   ??_row3 0073  
+                 ??_row4 0073                   _TRISC0 0438                   _TRISC1 0439  
+       __end_of_lcd_init 0429                   _keypad 03D3         __end_of_send_dat 03BF  
+       __end_of_send_cmd 03D3                   ltemp0a 0080         __end_of_show_dat 0404  
+                 ttemp0a 007F                   wtemp0a 007F  __end_of__initialization 07FC  
+         __pcstackCOMMON 0070               __pmaintext 0429                  ?_keypad 0070  
+              ?_lcd_init 0070               __stringtab 0003                ?_send_dat 0070  
+              ?_send_cmd 0070                ?_show_dat 0073                  __ptext1 03E8  
+                __ptext2 0404                  __ptext3 03D3                  __ptext4 0711  
+                __ptext5 03BF                  __ptext6 0626                  __ptext7 053B  
+                __ptext8 0450                  __ptext9 03AB               ??_lcd_init 0073  
+   end_of_initialization 07FC               ??_send_dat 0070               ??_send_cmd 0070  
+             ??_show_dat 0074           __end_of_keypad 03E8      start_initialization 07FC  
+               ??_keypad 0074                ___latbits 0002                __pstrings 0003  
+            __stringbase 0008       __end_of__stringtab 0009                 _lcd_init 0404  
+              send_dat@b 0072                send_cmd@a 0072                 _send_dat 03AB  
+               _send_cmd 03BF                 _show_dat 03E8                show_dat@s 0073  
+              stringcode 0003                 stringdir 0003                 stringtab 0003  

@@ -1,0 +1,131 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"38 E:\EMBEDDED SYSTEM\PIC\36.EPROM READ\EPROM_READ.X\EPROM_READ.c
+[v _main main `(i  1 e 2 0 ]
+"54
+[v _SPI_master_init SPI_master_init `(v  1 e 1 0 ]
+"59
+[v _SPI_master_data SPI_master_data `(v  1 e 1 0 ]
+"65
+[v _SPI_page_write SPI_page_write `(v  1 e 1 0 ]
+"91
+[v _SPI_read_byte SPI_read_byte `(v  1 e 1 0 ]
+"111
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"121
+[v _send_cmd send_cmd `(v  1 e 1 0 ]
+"131
+[v _send_data send_data `(v  1 e 1 0 ]
+"141
+[v _show_data show_data `(v  1 e 1 0 ]
+"340 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+"808
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"815
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1830
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+"2753
+[v _RD0 RD0 `VEb  1 e 0 @64 ]
+"2756
+[v _RD1 RD1 `VEb  1 e 0 @65 ]
+"2759
+[v _RD2 RD2 `VEb  1 e 0 @66 ]
+"2762
+[v _RD3 RD3 `VEb  1 e 0 @67 ]
+"2828
+[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"37 E:\EMBEDDED SYSTEM\PIC\36.EPROM READ\EPROM_READ.X\EPROM_READ.c
+[v _data data `uc  1 e 1 0 ]
+"38
+[v _main main `(i  1 e 2 0 ]
+{
+"53
+} 0
+"141
+[v _show_data show_data `(v  1 e 1 0 ]
+{
+[v show_data@s s `*.24uc  1 p 1 4 ]
+"147
+} 0
+"111
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"119
+} 0
+"121
+[v _send_cmd send_cmd `(v  1 e 1 0 ]
+{
+[v send_cmd@a a `uc  1 p 1 wreg ]
+[v send_cmd@a a `uc  1 p 1 wreg ]
+"123
+[v send_cmd@a a `uc  1 p 1 2 ]
+"129
+} 1
+"91
+[v _SPI_read_byte SPI_read_byte `(v  1 e 1 0 ]
+{
+[v SPI_read_byte@MSB MSB `uc  1 p 1 wreg ]
+"93
+[v SPI_read_byte@i i `ui  1 a 2 8 ]
+"91
+[v SPI_read_byte@MSB MSB `uc  1 p 1 wreg ]
+[v SPI_read_byte@LSB LSB `uc  1 p 1 4 ]
+"94
+[v SPI_read_byte@MSB MSB `uc  1 p 1 7 ]
+"109
+} 1
+"131
+[v _send_data send_data `(v  1 e 1 0 ]
+{
+[v send_data@b b `uc  1 p 1 wreg ]
+[v send_data@b b `uc  1 p 1 wreg ]
+"133
+[v send_data@b b `uc  1 p 1 3 ]
+"139
+} 1
+"65
+[v _SPI_page_write SPI_page_write `(v  1 e 1 0 ]
+{
+[v SPI_page_write@MSB MSB `uc  1 p 1 wreg ]
+"67
+[v SPI_page_write@i i `ui  1 a 2 5 ]
+"65
+[v SPI_page_write@MSB MSB `uc  1 p 1 wreg ]
+[v SPI_page_write@LSB LSB `uc  1 p 1 1 ]
+"68
+[v SPI_page_write@MSB MSB `uc  1 p 1 4 ]
+"89
+} 1
+"59
+[v _SPI_master_data SPI_master_data `(v  1 e 1 0 ]
+{
+[v SPI_master_data@a a `uc  1 p 1 wreg ]
+[v SPI_master_data@a a `uc  1 p 1 wreg ]
+"61
+[v SPI_master_data@a a `uc  1 p 1 0 ]
+"64
+} 1
+"54
+[v _SPI_master_init SPI_master_init `(v  1 e 1 0 ]
+{
+"58
+} 0

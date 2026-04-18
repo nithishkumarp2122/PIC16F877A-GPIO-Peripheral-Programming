@@ -1,0 +1,63 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"24 E:\EMBEDDED SYSTEM\PIC\17.CAPTURE MODE CCP1\COMPARECCP2.X\COMPARECCP2.c
+[v _main main `(i  1 e 2 0 ]
+"40
+[v _compare_set compare_set `(v  1 e 1 0 ]
+"47
+[v _compare_reset compare_reset `(v  1 e 1 0 ]
+"54
+[v _compare compare `(v  1 e 1 0 ]
+"278 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"634
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
+"655
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
+"885
+[v _CCPR1 CCPR1 `VEus  1 e 2 @21 ]
+"906
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @23 ]
+"1073
+[v _CCPR2 CCPR2 `VEus  1 e 2 @27 ]
+"1094
+[v _CCP2CON CCP2CON `VEuc  1 e 1 @29 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"2465
+[v _CCP2IF CCP2IF `VEb  1 e 0 @104 ]
+"2894
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"2897
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"24 E:\EMBEDDED SYSTEM\PIC\17.CAPTURE MODE CCP1\COMPARECCP2.X\COMPARECCP2.c
+[v _main main `(i  1 e 2 0 ]
+{
+"37
+} 0
+"40
+[v _compare_set compare_set `(v  1 e 1 0 ]
+{
+"45
+} 0
+"47
+[v _compare_reset compare_reset `(v  1 e 1 0 ]
+{
+"52
+} 0
+"54
+[v _compare compare `(v  1 e 1 0 ]
+{
+"63
+} 0

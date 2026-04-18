@@ -1,0 +1,55 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"27 E:\EMBEDDED SYSTEM\PIC\20.PWM\PWM8BIT.X\PWM8BIT.c
+[v _main main `(i  1 e 2 0 ]
+"39
+[v _PWM_INIT PWM_INIT `(v  1 e 1 0 ]
+"46
+[v _PWM_INC PWM_INC `(v  1 e 1 0 ]
+"54
+[v _PWM_DEC PWM_DEC `(v  1 e 1 0 ]
+"730 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[v _TMR2 TMR2 `VEuc  1 e 1 @17 ]
+"737
+[v _T2CON T2CON `VEuc  1 e 1 @18 ]
+"892
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
+"906
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @23 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1816
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"25 E:\EMBEDDED SYSTEM\PIC\20.PWM\PWM8BIT.X\PWM8BIT.c
+[v _dutycycle dutycycle `i  1 e 2 0 ]
+"27
+[v _main main `(i  1 e 2 0 ]
+{
+"38
+} 0
+"39
+[v _PWM_INIT PWM_INIT `(v  1 e 1 0 ]
+{
+"45
+} 0
+"46
+[v _PWM_INC PWM_INC `(v  1 e 1 0 ]
+{
+"53
+} 0
+"54
+[v _PWM_DEC PWM_DEC `(v  1 e 1 0 ]
+{
+"61
+} 0

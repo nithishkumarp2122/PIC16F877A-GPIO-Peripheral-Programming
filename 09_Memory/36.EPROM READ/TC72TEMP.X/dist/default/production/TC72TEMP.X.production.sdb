@@ -1,0 +1,239 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"1 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"1177 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+"1817
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"65 E:\EMBEDDED SYSTEM\PIC\36.EPROM READ\TC72TEMP.X\TC72TEMP_SENSOR.c
+[v _SPI_master_init SPI_master_init `(v  1 e 1 0 ]
+"71
+[v _SPI_master_write SPI_master_write `(v  1 e 1 0 ]
+"78
+[v _SPI_master_read SPI_master_read `(uc  1 e 1 0 ]
+"85
+[v _TC72_init TC72_init `(v  1 e 1 0 ]
+"96
+[v _TC72_read_temperature TC72_read_temperature `(uc  1 e 1 0 ]
+"110
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"117
+[v _send_cmd send_cmd `(v  1 e 1 0 ]
+"126
+[v _send_data send_data `(v  1 e 1 0 ]
+"135
+[v _display_data display_data `(v  1 e 1 0 ]
+"143
+[v _main main `(i  1 e 2 0 ]
+"216 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"808
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"815
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+"1830
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+"2708
+[v _RC0 RC0 `VEb  1 e 0 @56 ]
+"2753
+[v _RD0 RD0 `VEb  1 e 0 @64 ]
+"2756
+[v _RD1 RD1 `VEb  1 e 0 @65 ]
+"2759
+[v _RD2 RD2 `VEb  1 e 0 @66 ]
+"2828
+[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"153 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"154
+[v _flags flags `uc  1 s 1 flags ]
+"185
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"143 E:\EMBEDDED SYSTEM\PIC\36.EPROM READ\TC72TEMP.X\TC72TEMP_SENSOR.c
+[v _main main `(i  1 e 2 0 ]
+{
+"146
+[v main@temp temp `[5]uc  1 a 5 37 ]
+"145
+[v main@result result `i  1 a 2 42 ]
+"167
+} 0
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[u S523 . 2 `*.39uc 1 buffer 2 0 `*.1DCuc 1 source 1 0 ]
+"13
+[s S526 _IO_FILE 11 `S523 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v sprintf@f f `S526  1 a 11 23 ]
+"12
+[v sprintf@ap ap `[1]*.4v  1 a 1 22 ]
+"9
+[v sprintf@s s `*.4uc  1 p 1 17 ]
+[v sprintf@fmt fmt `*.24DCuc  1 p 1 18 ]
+"23
+} 0
+"1817 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1820
+[v vfprintf@cfmt cfmt `*.24uc  1 a 1 13 ]
+[s S558 _IO_FILE 0 ]
+"1817
+[v vfprintf@fp fp `*.39S558  1 p 2 13 ]
+[v vfprintf@fmt fmt `*.24DCuc  1 p 1 15 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 16 ]
+"1840
+} 0
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+[u S571 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+"1188
+[v vfpfcnvrt@convarg convarg `S571  1 a 4 8 ]
+"1179
+[v vfpfcnvrt@c c `uc  1 a 1 12 ]
+[v vfpfcnvrt@cp cp `*.24uc  1 a 1 7 ]
+"1180
+[v vfpfcnvrt@done done `a  1 a 1 6 ]
+[s S558 _IO_FILE 0 ]
+"1177
+[v vfpfcnvrt@fp fp `*.39S558  1 p 2 0 ]
+[v vfpfcnvrt@fmt fmt `*.30*.24uc  1 p 1 2 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 3 ]
+"1814
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 0 ]
+[u S523 . 2 `*.39uc 1 buffer 2 0 `*.1DCuc 1 source 1 0 ]
+[s S526 _IO_FILE 11 `S523 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.39S526  1 p 2 2 ]
+"24
+} 0
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+"9
+} 1
+"1 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 6 ]
+"4
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"110 E:\EMBEDDED SYSTEM\PIC\36.EPROM READ\TC72TEMP.X\TC72TEMP_SENSOR.c
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"116
+} 0
+"117
+[v _send_cmd send_cmd `(v  1 e 1 0 ]
+{
+[v send_cmd@b b `uc  1 p 1 wreg ]
+[v send_cmd@b b `uc  1 p 1 wreg ]
+"119
+[v send_cmd@b b `uc  1 p 1 2 ]
+"125
+} 1
+"135
+[v _display_data display_data `(v  1 e 1 0 ]
+{
+[v display_data@ptr ptr `*.26uc  1 p 2 3 ]
+"141
+} 0
+"126
+[v _send_data send_data `(v  1 e 1 0 ]
+{
+[v send_data@c c `uc  1 p 1 wreg ]
+[v send_data@c c `uc  1 p 1 wreg ]
+"128
+[v send_data@c c `uc  1 p 1 2 ]
+"134
+} 1
+"96
+[v _TC72_read_temperature TC72_read_temperature `(uc  1 e 1 0 ]
+{
+"98
+[v TC72_read_temperature@temp temp `uc  1 a 1 3 ]
+"108
+} 0
+"78
+[v _SPI_master_read SPI_master_read `(uc  1 e 1 0 ]
+{
+"84
+} 0
+"85
+[v _TC72_init TC72_init `(v  1 e 1 0 ]
+{
+"95
+} 0
+"71
+[v _SPI_master_write SPI_master_write `(v  1 e 1 0 ]
+{
+[v SPI_master_write@a a `uc  1 p 1 wreg ]
+[v SPI_master_write@a a `uc  1 p 1 wreg ]
+"73
+[v SPI_master_write@a a `uc  1 p 1 0 ]
+"76
+} 1
+"65
+[v _SPI_master_init SPI_master_init `(v  1 e 1 0 ]
+{
+"69
+} 0

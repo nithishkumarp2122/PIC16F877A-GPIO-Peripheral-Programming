@@ -1,0 +1,77 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"33 E:\EMBEDDED SYSTEM\PIC\08.LCD DISPLAY\LCD_DISPLAY.X\LCD_DISPLAY.c
+[v _main main `(v  1 e 1 0 ]
+"52
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"60
+[v _send_cmd send_cmd `(v  1 e 1 0 ]
+"70
+[v _send_data send_data `(v  1 e 1 0 ]
+"80
+[v _show_data show_data `(v  1 e 1 0 ]
+"88
+[v _lcd_delay lcd_delay `(v  1 e 1 0 ]
+"216 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"2708
+[v _RC0 RC0 `VEb  1 e 0 @56 ]
+"2711
+[v _RC1 RC1 `VEb  1 e 0 @57 ]
+"2714
+[v _RC2 RC2 `VEb  1 e 0 @58 ]
+"33 E:\EMBEDDED SYSTEM\PIC\08.LCD DISPLAY\LCD_DISPLAY.X\LCD_DISPLAY.c
+[v _main main `(v  1 e 1 0 ]
+{
+"50
+} 0
+"80
+[v _show_data show_data `(v  1 e 1 0 ]
+{
+[v show_data@s s `*.24uc  1 p 1 4 ]
+"86
+} 0
+"70
+[v _send_data send_data `(v  1 e 1 0 ]
+{
+[v send_data@b b `uc  1 p 1 wreg ]
+[v send_data@b b `uc  1 p 1 wreg ]
+"72
+[v send_data@b b `uc  1 p 1 3 ]
+"78
+} 1
+"52
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"58
+} 0
+"60
+[v _send_cmd send_cmd `(v  1 e 1 0 ]
+{
+[v send_cmd@a a `uc  1 p 1 wreg ]
+[v send_cmd@a a `uc  1 p 1 wreg ]
+"62
+[v send_cmd@a a `uc  1 p 1 3 ]
+"68
+} 1
+"88
+[v _lcd_delay lcd_delay `(v  1 e 1 0 ]
+{
+[v lcd_delay@ms ms `i  1 p 2 0 ]
+"92
+} 0

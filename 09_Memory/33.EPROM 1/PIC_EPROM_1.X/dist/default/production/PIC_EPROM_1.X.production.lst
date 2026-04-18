@@ -1,0 +1,963 @@
+
+
+Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
+                                                                                               Thu Dec  4 12:16:10 2025
+
+Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+     7                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+     8                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+     9                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    10                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    11                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    12                           	dabs	1,0x7E,2
+    13     0000                     
+    14                           ; Generated 12/10/2023 GMT
+    15                           ; 
+    16                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    17                           ; All rights reserved.
+    18                           ; 
+    19                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    20                           ; 
+    21                           ; Redistribution and use in source and binary forms, with or without modification, are
+    22                           ; permitted provided that the following conditions are met:
+    23                           ; 
+    24                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    25                           ;        conditions and the following disclaimer.
+    26                           ; 
+    27                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    28                           ;        of conditions and the following disclaimer in the documentation and/or other
+    29                           ;        materials provided with the distribution. Publication is not required when
+    30                           ;        this file is used in an embedded application.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC16F877A Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48     0004                     fsr             equ	4
+    49     0004                     fsr0            equ	4
+    50     0000                     indf            equ	0
+    51     0000                     indf0           equ	0
+    52     0002                     pc              equ	2
+    53     0002                     pcl             equ	2
+    54     000A                     pclath          equ	10
+    55     0003                     status          equ	3
+    56     0000                     INDF            equ	0	;# 
+    57     0001                     TMR0            equ	1	;# 
+    58     0002                     PCL             equ	2	;# 
+    59     0003                     STATUS          equ	3	;# 
+    60     0004                     FSR             equ	4	;# 
+    61     0005                     PORTA           equ	5	;# 
+    62     0006                     PORTB           equ	6	;# 
+    63     0007                     PORTC           equ	7	;# 
+    64     0008                     PORTD           equ	8	;# 
+    65     0009                     PORTE           equ	9	;# 
+    66     000A                     PCLATH          equ	10	;# 
+    67     000B                     INTCON          equ	11	;# 
+    68     000C                     PIR1            equ	12	;# 
+    69     000D                     PIR2            equ	13	;# 
+    70     000E                     TMR1            equ	14	;# 
+    71     000E                     TMR1L           equ	14	;# 
+    72     000F                     TMR1H           equ	15	;# 
+    73     0010                     T1CON           equ	16	;# 
+    74     0011                     TMR2            equ	17	;# 
+    75     0012                     T2CON           equ	18	;# 
+    76     0013                     SSPBUF          equ	19	;# 
+    77     0014                     SSPCON          equ	20	;# 
+    78     0015                     CCPR1           equ	21	;# 
+    79     0015                     CCPR1L          equ	21	;# 
+    80     0016                     CCPR1H          equ	22	;# 
+    81     0017                     CCP1CON         equ	23	;# 
+    82     0018                     RCSTA           equ	24	;# 
+    83     0019                     TXREG           equ	25	;# 
+    84     001A                     RCREG           equ	26	;# 
+    85     001B                     CCPR2           equ	27	;# 
+    86     001B                     CCPR2L          equ	27	;# 
+    87     001C                     CCPR2H          equ	28	;# 
+    88     001D                     CCP2CON         equ	29	;# 
+    89     001E                     ADRESH          equ	30	;# 
+    90     001F                     ADCON0          equ	31	;# 
+    91     0081                     OPTION_REG      equ	129	;# 
+    92     0085                     TRISA           equ	133	;# 
+    93     0086                     TRISB           equ	134	;# 
+    94     0087                     TRISC           equ	135	;# 
+    95     0088                     TRISD           equ	136	;# 
+    96     0089                     TRISE           equ	137	;# 
+    97     008C                     PIE1            equ	140	;# 
+    98     008D                     PIE2            equ	141	;# 
+    99     008E                     PCON            equ	142	;# 
+   100     0091                     SSPCON2         equ	145	;# 
+   101     0092                     PR2             equ	146	;# 
+   102     0093                     SSPADD          equ	147	;# 
+   103     0094                     SSPSTAT         equ	148	;# 
+   104     0098                     TXSTA           equ	152	;# 
+   105     0099                     SPBRG           equ	153	;# 
+   106     009C                     CMCON           equ	156	;# 
+   107     009D                     CVRCON          equ	157	;# 
+   108     009E                     ADRESL          equ	158	;# 
+   109     009F                     ADCON1          equ	159	;# 
+   110     010C                     EEDATA          equ	268	;# 
+   111     010D                     EEADR           equ	269	;# 
+   112     010E                     EEDATH          equ	270	;# 
+   113     010F                     EEADRH          equ	271	;# 
+   114     018C                     EECON1          equ	396	;# 
+   115     018D                     EECON2          equ	397	;# 
+   116     0000                     INDF            equ	0	;# 
+   117     0001                     TMR0            equ	1	;# 
+   118     0002                     PCL             equ	2	;# 
+   119     0003                     STATUS          equ	3	;# 
+   120     0004                     FSR             equ	4	;# 
+   121     0005                     PORTA           equ	5	;# 
+   122     0006                     PORTB           equ	6	;# 
+   123     0007                     PORTC           equ	7	;# 
+   124     0008                     PORTD           equ	8	;# 
+   125     0009                     PORTE           equ	9	;# 
+   126     000A                     PCLATH          equ	10	;# 
+   127     000B                     INTCON          equ	11	;# 
+   128     000C                     PIR1            equ	12	;# 
+   129     000D                     PIR2            equ	13	;# 
+   130     000E                     TMR1            equ	14	;# 
+   131     000E                     TMR1L           equ	14	;# 
+   132     000F                     TMR1H           equ	15	;# 
+   133     0010                     T1CON           equ	16	;# 
+   134     0011                     TMR2            equ	17	;# 
+   135     0012                     T2CON           equ	18	;# 
+   136     0013                     SSPBUF          equ	19	;# 
+   137     0014                     SSPCON          equ	20	;# 
+   138     0015                     CCPR1           equ	21	;# 
+   139     0015                     CCPR1L          equ	21	;# 
+   140     0016                     CCPR1H          equ	22	;# 
+   141     0017                     CCP1CON         equ	23	;# 
+   142     0018                     RCSTA           equ	24	;# 
+   143     0019                     TXREG           equ	25	;# 
+   144     001A                     RCREG           equ	26	;# 
+   145     001B                     CCPR2           equ	27	;# 
+   146     001B                     CCPR2L          equ	27	;# 
+   147     001C                     CCPR2H          equ	28	;# 
+   148     001D                     CCP2CON         equ	29	;# 
+   149     001E                     ADRESH          equ	30	;# 
+   150     001F                     ADCON0          equ	31	;# 
+   151     0081                     OPTION_REG      equ	129	;# 
+   152     0085                     TRISA           equ	133	;# 
+   153     0086                     TRISB           equ	134	;# 
+   154     0087                     TRISC           equ	135	;# 
+   155     0088                     TRISD           equ	136	;# 
+   156     0089                     TRISE           equ	137	;# 
+   157     008C                     PIE1            equ	140	;# 
+   158     008D                     PIE2            equ	141	;# 
+   159     008E                     PCON            equ	142	;# 
+   160     0091                     SSPCON2         equ	145	;# 
+   161     0092                     PR2             equ	146	;# 
+   162     0093                     SSPADD          equ	147	;# 
+   163     0094                     SSPSTAT         equ	148	;# 
+   164     0098                     TXSTA           equ	152	;# 
+   165     0099                     SPBRG           equ	153	;# 
+   166     009C                     CMCON           equ	156	;# 
+   167     009D                     CVRCON          equ	157	;# 
+   168     009E                     ADRESL          equ	158	;# 
+   169     009F                     ADCON1          equ	159	;# 
+   170     010C                     EEDATA          equ	268	;# 
+   171     010D                     EEADR           equ	269	;# 
+   172     010E                     EEDATH          equ	270	;# 
+   173     010F                     EEADRH          equ	271	;# 
+   174     018C                     EECON1          equ	396	;# 
+   175     018D                     EECON2          equ	397	;# 
+   176     0013                     _SSPBUF         set	19
+   177     0014                     _SSPCON         set	20
+   178     0038                     _RC0            set	56
+   179     0063                     _SSPIF          set	99
+   180     0087                     _TRISC          set	135
+   181     0094                     _SSPSTAT        set	148
+   182                           
+   183                           	psect	cinit
+   184     07FC                     start_initialization:	
+   185                           ; #config settings
+   186                           
+   187     07FC                     __initialization:
+   188     07FC                     end_of_initialization:	
+   189                           ;End of C runtime variable initialization code
+   190                           
+   191     07FC                     __end_of__initialization:
+   192     07FC  0183               	clrf	3
+   193     07FD  120A  118A  2F0E   	ljmp	_main	;jump to C main() function
+   194                           
+   195                           	psect	cstackCOMMON
+   196     0070                     __pcstackCOMMON:
+   197     0070                     ?_SPI_Master_init:
+   198     0070                     ?_SPI_Master_data:	
+   199                           ; 1 bytes @ 0x0
+   200                           
+   201     0070                     ?_SPI_write_byte:	
+   202                           ; 1 bytes @ 0x0
+   203                           
+   204     0070                     ?_SPI_write_page:	
+   205                           ; 1 bytes @ 0x0
+   206                           
+   207     0070                     ?_main:	
+   208                           ; 1 bytes @ 0x0
+   209                           
+   210     0070                     SPI_Master_data@a:	
+   211                           ; 2 bytes @ 0x0
+   212                           
+   213     0070                     ??_SPI_Master_init:	
+   214                           ; 1 bytes @ 0x0
+   215                           
+   216     0070                     ??_SPI_Master_data:	
+   217                           ; 1 bytes @ 0x0
+   218                           
+   219                           
+   220                           ; 1 bytes @ 0x0
+   221     0070                     	ds	1
+   222     0071                     ??_SPI_write_byte:
+   223     0071                     ??_SPI_write_page:	
+   224                           ; 1 bytes @ 0x1
+   225                           
+   226                           
+   227                           ; 1 bytes @ 0x1
+   228     0071                     	ds	2
+   229     0073                     SPI_write_page@i:
+   230                           
+   231                           ; 2 bytes @ 0x3
+   232     0073                     	ds	2
+   233     0075                     ??_main:
+   234                           
+   235                           ; 1 bytes @ 0x5
+   236     0075                     	ds	3
+   237                           
+   238                           	psect	maintext
+   239     070E                     __pmaintext:	
+   240 ;;
+   241 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   242 ;;
+   243 ;; *************** function _main *****************
+   244 ;; Defined at:
+   245 ;;		line 98 in file "EPROM_1.c"
+   246 ;; Parameters:    Size  Location     Type
+   247 ;;		None
+   248 ;; Auto vars:     Size  Location     Type
+   249 ;;		None
+   250 ;; Return value:  Size  Location     Type
+   251 ;;                  2   35[None  ] int 
+   252 ;; Registers used:
+   253 ;;		wreg, status,2, status,0, pclath, cstack
+   254 ;; Tracked objects:
+   255 ;;		On entry : B00/0
+   256 ;;		On exit  : 0/0
+   257 ;;		Unchanged: 0/0
+   258 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   259 ;;      Params:         0       0       0       0       0
+   260 ;;      Locals:         0       0       0       0       0
+   261 ;;      Temps:          3       0       0       0       0
+   262 ;;      Totals:         3       0       0       0       0
+   263 ;;Total ram usage:        3 bytes
+   264 ;; Hardware stack levels required when called: 2
+   265 ;; This function calls:
+   266 ;;		_SPI_Master_init
+   267 ;;		_SPI_write_byte
+   268 ;;		_SPI_write_page
+   269 ;; This function is called by:
+   270 ;;		Startup code after reset
+   271 ;; This function uses a non-reentrant model
+   272 ;;
+   273                           
+   274     070E                     _main:	
+   275                           ;psect for function _main
+   276                           
+   277     070E                     l647:	
+   278                           ;incstack = 0
+   279                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   280                           
+   281                           
+   282                           ;EPROM_1.c: 101:     TRISC = 0X10;
+   283     070E  3010               	movlw	16
+   284     070F  1683               	bsf	3,5	;RP0=1, select bank1
+   285     0710  1303               	bcf	3,6	;RP1=0, select bank1
+   286     0711  0087               	movwf	7	;volatile
+   287     0712                     l649:
+   288                           
+   289                           ;EPROM_1.c: 102:     SPI_Master_init();
+   290     0712  120A  118A  26FB  120A  118A  	fcall	_SPI_Master_init
+   291     0717                     l651:
+   292                           
+   293                           ;EPROM_1.c: 104:     SPI_write_byte();
+   294     0717  120A  118A  273F  120A  118A  	fcall	_SPI_write_byte
+   295                           
+   296                           ;EPROM_1.c: 105:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   297     071C  301A               	movlw	26
+   298     071D  00F7               	movwf	??_main+2
+   299     071E  305E               	movlw	94
+   300     071F  00F6               	movwf	??_main+1
+   301     0720  306E               	movlw	110
+   302     0721  00F5               	movwf	??_main
+   303     0722                     u37:
+   304     0722  0BF5               	decfsz	??_main,f
+   305     0723  2F22               	goto	u37
+   306     0724  0BF6               	decfsz	??_main+1,f
+   307     0725  2F22               	goto	u37
+   308     0726  0BF7               	decfsz	??_main+2,f
+   309     0727  2F22               	goto	u37
+   310     0728  0000               	nop
+   311     0729                     l653:
+   312                           
+   313                           ;EPROM_1.c: 106:     SPI_write_page();
+   314     0729  120A  118A  2794  120A  118A  	fcall	_SPI_write_page
+   315     072E                     l655:
+   316                           
+   317                           ;EPROM_1.c: 107:     _delay((unsigned long)((1000)*(20000000/4000.0)));
+   318     072E  301A               	movlw	26
+   319     072F  00F7               	movwf	??_main+2
+   320     0730  305E               	movlw	94
+   321     0731  00F6               	movwf	??_main+1
+   322     0732  306E               	movlw	110
+   323     0733  00F5               	movwf	??_main
+   324     0734                     u47:
+   325     0734  0BF5               	decfsz	??_main,f
+   326     0735  2F34               	goto	u47
+   327     0736  0BF6               	decfsz	??_main+1,f
+   328     0737  2F34               	goto	u47
+   329     0738  0BF7               	decfsz	??_main+2,f
+   330     0739  2F34               	goto	u47
+   331     073A  0000               	nop
+   332     073B                     l36:	
+   333                           ;EPROM_1.c: 108:     while(1);
+   334                           
+   335     073B                     l37:
+   336     073B  2F3B               	goto	l36
+   337     073C  120A  118A  2800   	ljmp	start
+   338     073F                     __end_of_main:
+   339                           
+   340                           	psect	text1
+   341     0794                     __ptext1:	
+   342 ;; *************** function _SPI_write_page *****************
+   343 ;; Defined at:
+   344 ;;		line 68 in file "EPROM_1.c"
+   345 ;; Parameters:    Size  Location     Type
+   346 ;;		None
+   347 ;; Auto vars:     Size  Location     Type
+   348 ;;  i               2    3[COMMON] unsigned int 
+   349 ;; Return value:  Size  Location     Type
+   350 ;;                  1    wreg      void 
+   351 ;; Registers used:
+   352 ;;		wreg, status,2, status,0, pclath, cstack
+   353 ;; Tracked objects:
+   354 ;;		On entry : 0/0
+   355 ;;		On exit  : 0/0
+   356 ;;		Unchanged: 0/0
+   357 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   358 ;;      Params:         0       0       0       0       0
+   359 ;;      Locals:         2       0       0       0       0
+   360 ;;      Temps:          2       0       0       0       0
+   361 ;;      Totals:         4       0       0       0       0
+   362 ;;Total ram usage:        4 bytes
+   363 ;; Hardware stack levels used: 1
+   364 ;; Hardware stack levels required when called: 1
+   365 ;; This function calls:
+   366 ;;		_SPI_Master_data
+   367 ;; This function is called by:
+   368 ;;		_main
+   369 ;; This function uses a non-reentrant model
+   370 ;;
+   371                           
+   372     0794                     _SPI_write_page:	
+   373                           ;psect for function _SPI_write_page
+   374                           
+   375     0794                     l613:	
+   376                           ;incstack = 0
+   377                           ; Regs used in _SPI_write_page: [wreg+status,2+status,0+pclath+cstack]
+   378                           
+   379                           
+   380                           ;EPROM_1.c: 70:     unsigned int i;;EPROM_1.c: 71:     RC0 = 1;
+   381     0794  1283               	bcf	3,5	;RP0=0, select bank0
+   382     0795  1303               	bcf	3,6	;RP1=0, select bank0
+   383     0796  1407               	bsf	7,0	;volatile
+   384     0797                     l615:
+   385                           
+   386                           ;EPROM_1.c: 72:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   387     0797  3041               	movlw	65
+   388     0798  00F2               	movwf	??_SPI_write_page+1
+   389     0799  30EE               	movlw	238
+   390     079A  00F1               	movwf	??_SPI_write_page
+   391     079B                     u57:
+   392     079B  0BF1               	decfsz	??_SPI_write_page,f
+   393     079C  2F9B               	goto	u57
+   394     079D  0BF2               	decfsz	??_SPI_write_page+1,f
+   395     079E  2F9B               	goto	u57
+   396     079F  0000               	nop
+   397     07A0                     l617:
+   398                           
+   399                           ;EPROM_1.c: 73:     RC0 = 0;
+   400     07A0  1283               	bcf	3,5	;RP0=0, select bank0
+   401     07A1  1303               	bcf	3,6	;RP1=0, select bank0
+   402     07A2  1007               	bcf	7,0	;volatile
+   403     07A3                     l619:
+   404                           
+   405                           ;EPROM_1.c: 75:     SPI_Master_data(0x06);
+   406     07A3  3006               	movlw	6
+   407     07A4  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   408     07A9                     l621:
+   409                           
+   410                           ;EPROM_1.c: 77:     RC0 = 1;
+   411     07A9  1283               	bcf	3,5	;RP0=0, select bank0
+   412     07AA  1303               	bcf	3,6	;RP1=0, select bank0
+   413     07AB  1407               	bsf	7,0	;volatile
+   414     07AC                     l623:
+   415                           
+   416                           ;EPROM_1.c: 78:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   417     07AC  3041               	movlw	65
+   418     07AD  00F2               	movwf	??_SPI_write_page+1
+   419     07AE  30EE               	movlw	238
+   420     07AF  00F1               	movwf	??_SPI_write_page
+   421     07B0                     u67:
+   422     07B0  0BF1               	decfsz	??_SPI_write_page,f
+   423     07B1  2FB0               	goto	u67
+   424     07B2  0BF2               	decfsz	??_SPI_write_page+1,f
+   425     07B3  2FB0               	goto	u67
+   426     07B4  0000               	nop
+   427     07B5                     l625:
+   428                           
+   429                           ;EPROM_1.c: 79:     RC0 = 0;
+   430     07B5  1283               	bcf	3,5	;RP0=0, select bank0
+   431     07B6  1303               	bcf	3,6	;RP1=0, select bank0
+   432     07B7  1007               	bcf	7,0	;volatile
+   433                           
+   434                           ;EPROM_1.c: 81:     SPI_Master_data(0x02);
+   435     07B8  3002               	movlw	2
+   436     07B9  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   437                           
+   438                           ;EPROM_1.c: 82:     SPI_Master_data(0x00);
+   439     07BE  3000               	movlw	0
+   440     07BF  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   441                           
+   442                           ;EPROM_1.c: 83:     SPI_Master_data(0x00);
+   443     07C4  3000               	movlw	0
+   444     07C5  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   445     07CA                     l627:
+   446                           
+   447                           ;EPROM_1.c: 84:     for(i = 'A'; i <= 'Z'; i++)
+   448     07CA  3041               	movlw	65
+   449     07CB  00F3               	movwf	SPI_write_page@i
+   450     07CC  3000               	movlw	0
+   451     07CD  00F4               	movwf	SPI_write_page@i+1
+   452     07CE                     l633:
+   453                           
+   454                           ;EPROM_1.c: 85:     {;EPROM_1.c: 86:         SPI_Master_data(i);
+   455     07CE  0873               	movf	SPI_write_page@i,w
+   456     07CF  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   457     07D4                     l635:
+   458                           
+   459                           ;EPROM_1.c: 87:     }
+   460     07D4  3001               	movlw	1
+   461     07D5  07F3               	addwf	SPI_write_page@i,f
+   462     07D6  1803               	skipnc
+   463     07D7  0AF4               	incf	SPI_write_page@i+1,f
+   464     07D8  3000               	movlw	0
+   465     07D9  07F4               	addwf	SPI_write_page@i+1,f
+   466     07DA                     l637:
+   467     07DA  3000               	movlw	0
+   468     07DB  0274               	subwf	SPI_write_page@i+1,w
+   469     07DC  305B               	movlw	91
+   470     07DD  1903               	skipnz
+   471     07DE  0273               	subwf	SPI_write_page@i,w
+   472     07DF  1C03               	skipc
+   473     07E0  2FE2               	goto	u21
+   474     07E1  2FE3               	goto	u20
+   475     07E2                     u21:
+   476     07E2  2FCE               	goto	l633
+   477     07E3                     u20:
+   478     07E3                     l30:
+   479                           
+   480                           ;EPROM_1.c: 89:     RC0 = 1;
+   481     07E3  1283               	bcf	3,5	;RP0=0, select bank0
+   482     07E4  1303               	bcf	3,6	;RP1=0, select bank0
+   483     07E5  1407               	bsf	7,0	;volatile
+   484     07E6                     l639:
+   485                           
+   486                           ;EPROM_1.c: 90:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   487     07E6  3041               	movlw	65
+   488     07E7  00F2               	movwf	??_SPI_write_page+1
+   489     07E8  30EE               	movlw	238
+   490     07E9  00F1               	movwf	??_SPI_write_page
+   491     07EA                     u77:
+   492     07EA  0BF1               	decfsz	??_SPI_write_page,f
+   493     07EB  2FEA               	goto	u77
+   494     07EC  0BF2               	decfsz	??_SPI_write_page+1,f
+   495     07ED  2FEA               	goto	u77
+   496     07EE  0000               	nop
+   497     07EF                     l641:
+   498                           
+   499                           ;EPROM_1.c: 91:     RC0 = 0;
+   500     07EF  1283               	bcf	3,5	;RP0=0, select bank0
+   501     07F0  1303               	bcf	3,6	;RP1=0, select bank0
+   502     07F1  1007               	bcf	7,0	;volatile
+   503     07F2                     l643:
+   504                           
+   505                           ;EPROM_1.c: 93:     SPI_Master_data(0x04);
+   506     07F2  3004               	movlw	4
+   507     07F3  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   508     07F8                     l645:
+   509                           
+   510                           ;EPROM_1.c: 94:     RC0 = 1;
+   511     07F8  1283               	bcf	3,5	;RP0=0, select bank0
+   512     07F9  1303               	bcf	3,6	;RP1=0, select bank0
+   513     07FA  1407               	bsf	7,0	;volatile
+   514     07FB                     l31:
+   515     07FB  0008               	return
+   516     07FC                     __end_of_SPI_write_page:
+   517                           
+   518                           	psect	text2
+   519     073F                     __ptext2:	
+   520 ;; *************** function _SPI_write_byte *****************
+   521 ;; Defined at:
+   522 ;;		line 43 in file "EPROM_1.c"
+   523 ;; Parameters:    Size  Location     Type
+   524 ;;		None
+   525 ;; Auto vars:     Size  Location     Type
+   526 ;;		None
+   527 ;; Return value:  Size  Location     Type
+   528 ;;                  1    wreg      void 
+   529 ;; Registers used:
+   530 ;;		wreg, status,2, status,0, pclath, cstack
+   531 ;; Tracked objects:
+   532 ;;		On entry : 0/0
+   533 ;;		On exit  : 0/0
+   534 ;;		Unchanged: 0/0
+   535 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   536 ;;      Params:         0       0       0       0       0
+   537 ;;      Locals:         0       0       0       0       0
+   538 ;;      Temps:          2       0       0       0       0
+   539 ;;      Totals:         2       0       0       0       0
+   540 ;;Total ram usage:        2 bytes
+   541 ;; Hardware stack levels used: 1
+   542 ;; Hardware stack levels required when called: 1
+   543 ;; This function calls:
+   544 ;;		_SPI_Master_data
+   545 ;; This function is called by:
+   546 ;;		_main
+   547 ;; This function uses a non-reentrant model
+   548 ;;
+   549                           
+   550     073F                     _SPI_write_byte:	
+   551                           ;psect for function _SPI_write_byte
+   552                           
+   553     073F                     l589:	
+   554                           ;incstack = 0
+   555                           ; Regs used in _SPI_write_byte: [wreg+status,2+status,0+pclath+cstack]
+   556                           
+   557                           
+   558                           ;EPROM_1.c: 45:     RC0 = 1;
+   559     073F  1283               	bcf	3,5	;RP0=0, select bank0
+   560     0740  1303               	bcf	3,6	;RP1=0, select bank0
+   561     0741  1407               	bsf	7,0	;volatile
+   562     0742                     l591:
+   563                           
+   564                           ;EPROM_1.c: 46:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   565     0742  3041               	movlw	65
+   566     0743  00F2               	movwf	??_SPI_write_byte+1
+   567     0744  30EE               	movlw	238
+   568     0745  00F1               	movwf	??_SPI_write_byte
+   569     0746                     u87:
+   570     0746  0BF1               	decfsz	??_SPI_write_byte,f
+   571     0747  2F46               	goto	u87
+   572     0748  0BF2               	decfsz	??_SPI_write_byte+1,f
+   573     0749  2F46               	goto	u87
+   574     074A  0000               	nop
+   575     074B                     l593:
+   576                           
+   577                           ;EPROM_1.c: 47:     RC0 = 0;
+   578     074B  1283               	bcf	3,5	;RP0=0, select bank0
+   579     074C  1303               	bcf	3,6	;RP1=0, select bank0
+   580     074D  1007               	bcf	7,0	;volatile
+   581     074E                     l595:
+   582                           
+   583                           ;EPROM_1.c: 49:     SPI_Master_data(0x06);
+   584     074E  3006               	movlw	6
+   585     074F  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   586     0754                     l597:
+   587                           
+   588                           ;EPROM_1.c: 51:     RC0 = 1;
+   589     0754  1283               	bcf	3,5	;RP0=0, select bank0
+   590     0755  1303               	bcf	3,6	;RP1=0, select bank0
+   591     0756  1407               	bsf	7,0	;volatile
+   592     0757                     l599:
+   593                           
+   594                           ;EPROM_1.c: 52:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   595     0757  3041               	movlw	65
+   596     0758  00F2               	movwf	??_SPI_write_byte+1
+   597     0759  30EE               	movlw	238
+   598     075A  00F1               	movwf	??_SPI_write_byte
+   599     075B                     u97:
+   600     075B  0BF1               	decfsz	??_SPI_write_byte,f
+   601     075C  2F5B               	goto	u97
+   602     075D  0BF2               	decfsz	??_SPI_write_byte+1,f
+   603     075E  2F5B               	goto	u97
+   604     075F  0000               	nop
+   605     0760                     l601:
+   606                           
+   607                           ;EPROM_1.c: 53:     RC0 = 0;
+   608     0760  1283               	bcf	3,5	;RP0=0, select bank0
+   609     0761  1303               	bcf	3,6	;RP1=0, select bank0
+   610     0762  1007               	bcf	7,0	;volatile
+   611                           
+   612                           ;EPROM_1.c: 55:     SPI_Master_data(0x02);
+   613     0763  3002               	movlw	2
+   614     0764  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   615                           
+   616                           ;EPROM_1.c: 56:     SPI_Master_data(0x00);
+   617     0769  3000               	movlw	0
+   618     076A  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   619                           
+   620                           ;EPROM_1.c: 57:     SPI_Master_data(0x20);
+   621     076F  3020               	movlw	32
+   622     0770  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   623                           
+   624                           ;EPROM_1.c: 58:     SPI_Master_data('H');
+   625     0775  3048               	movlw	72
+   626     0776  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   627     077B                     l603:
+   628                           
+   629                           ;EPROM_1.c: 60:     RC0 = 1;
+   630     077B  1283               	bcf	3,5	;RP0=0, select bank0
+   631     077C  1303               	bcf	3,6	;RP1=0, select bank0
+   632     077D  1407               	bsf	7,0	;volatile
+   633     077E                     l605:
+   634                           
+   635                           ;EPROM_1.c: 61:     _delay((unsigned long)((10)*(20000000/4000.0)));
+   636     077E  3041               	movlw	65
+   637     077F  00F2               	movwf	??_SPI_write_byte+1
+   638     0780  30EE               	movlw	238
+   639     0781  00F1               	movwf	??_SPI_write_byte
+   640     0782                     u107:
+   641     0782  0BF1               	decfsz	??_SPI_write_byte,f
+   642     0783  2F82               	goto	u107
+   643     0784  0BF2               	decfsz	??_SPI_write_byte+1,f
+   644     0785  2F82               	goto	u107
+   645     0786  0000               	nop
+   646     0787                     l607:
+   647                           
+   648                           ;EPROM_1.c: 62:     RC0 = 0;
+   649     0787  1283               	bcf	3,5	;RP0=0, select bank0
+   650     0788  1303               	bcf	3,6	;RP1=0, select bank0
+   651     0789  1007               	bcf	7,0	;volatile
+   652     078A                     l609:
+   653                           
+   654                           ;EPROM_1.c: 64:     SPI_Master_data(0x04);
+   655     078A  3004               	movlw	4
+   656     078B  120A  118A  2703  120A  118A  	fcall	_SPI_Master_data
+   657     0790                     l611:
+   658                           
+   659                           ;EPROM_1.c: 65:     RC0 = 1;
+   660     0790  1283               	bcf	3,5	;RP0=0, select bank0
+   661     0791  1303               	bcf	3,6	;RP1=0, select bank0
+   662     0792  1407               	bsf	7,0	;volatile
+   663     0793                     l26:
+   664     0793  0008               	return
+   665     0794                     __end_of_SPI_write_byte:
+   666                           
+   667                           	psect	text3
+   668     0703                     __ptext3:	
+   669 ;; *************** function _SPI_Master_data *****************
+   670 ;; Defined at:
+   671 ;;		line 36 in file "EPROM_1.c"
+   672 ;; Parameters:    Size  Location     Type
+   673 ;;  a               1    wreg     unsigned char 
+   674 ;; Auto vars:     Size  Location     Type
+   675 ;;  a               1    0[COMMON] unsigned char 
+   676 ;; Return value:  Size  Location     Type
+   677 ;;                  1    wreg      void 
+   678 ;; Registers used:
+   679 ;;		wreg
+   680 ;; Tracked objects:
+   681 ;;		On entry : 0/0
+   682 ;;		On exit  : 0/0
+   683 ;;		Unchanged: 0/0
+   684 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   685 ;;      Params:         0       0       0       0       0
+   686 ;;      Locals:         1       0       0       0       0
+   687 ;;      Temps:          0       0       0       0       0
+   688 ;;      Totals:         1       0       0       0       0
+   689 ;;Total ram usage:        1 bytes
+   690 ;; Hardware stack levels used: 1
+   691 ;; This function calls:
+   692 ;;		Nothing
+   693 ;; This function is called by:
+   694 ;;		_SPI_write_byte
+   695 ;;		_SPI_write_page
+   696 ;; This function uses a non-reentrant model
+   697 ;;
+   698                           
+   699     0703                     _SPI_Master_data:	
+   700                           ;psect for function _SPI_Master_data
+   701                           
+   702                           
+   703                           ;incstack = 0
+   704                           ; Regs used in _SPI_Master_data: [wreg]
+   705                           ;SPI_Master_data@a stored from wreg
+   706     0703  00F0               	movwf	SPI_Master_data@a
+   707     0704                     l583:
+   708                           
+   709                           ;EPROM_1.c: 36: void SPI_Master_data(unsigned char a);EPROM_1.c: 37: {;EPROM_1.c: 38:   
+      +                            SSPBUF = a;
+   710     0704  0870               	movf	SPI_Master_data@a,w
+   711     0705  1283               	bcf	3,5	;RP0=0, select bank0
+   712     0706  1303               	bcf	3,6	;RP1=0, select bank0
+   713     0707  0093               	movwf	19	;volatile
+   714     0708                     l20:	
+   715                           ;EPROM_1.c: 39:     while(SSPIF == 0);
+   716                           
+   717     0708  1D8C               	btfss	12,3	;volatile
+   718     0709  2F0B               	goto	u11
+   719     070A  2F0C               	goto	u10
+   720     070B                     u11:
+   721     070B  2F08               	goto	l20
+   722     070C                     u10:
+   723     070C                     l22:
+   724                           
+   725                           ;EPROM_1.c: 40:     SSPIF = 0;
+   726     070C  118C               	bcf	12,3	;volatile
+   727     070D                     l23:
+   728     070D  0008               	return
+   729     070E                     __end_of_SPI_Master_data:
+   730                           
+   731                           	psect	text4
+   732     06FB                     __ptext4:	
+   733 ;; *************** function _SPI_Master_init *****************
+   734 ;; Defined at:
+   735 ;;		line 29 in file "EPROM_1.c"
+   736 ;; Parameters:    Size  Location     Type
+   737 ;;		None
+   738 ;; Auto vars:     Size  Location     Type
+   739 ;;		None
+   740 ;; Return value:  Size  Location     Type
+   741 ;;                  1    wreg      void 
+   742 ;; Registers used:
+   743 ;;		status,2
+   744 ;; Tracked objects:
+   745 ;;		On entry : 0/0
+   746 ;;		On exit  : 0/0
+   747 ;;		Unchanged: 0/0
+   748 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   749 ;;      Params:         0       0       0       0       0
+   750 ;;      Locals:         0       0       0       0       0
+   751 ;;      Temps:          0       0       0       0       0
+   752 ;;      Totals:         0       0       0       0       0
+   753 ;;Total ram usage:        0 bytes
+   754 ;; Hardware stack levels used: 1
+   755 ;; This function calls:
+   756 ;;		Nothing
+   757 ;; This function is called by:
+   758 ;;		_main
+   759 ;; This function uses a non-reentrant model
+   760 ;;
+   761                           
+   762     06FB                     _SPI_Master_init:	
+   763                           ;psect for function _SPI_Master_init
+   764                           
+   765     06FB                     l585:	
+   766                           ;incstack = 0
+   767                           ; Regs used in _SPI_Master_init: [status,2]
+   768                           
+   769                           
+   770                           ;EPROM_1.c: 32:     SSPCON = 0X20;
+   771     06FB  3020               	movlw	32
+   772     06FC  1283               	bcf	3,5	;RP0=0, select bank0
+   773     06FD  1303               	bcf	3,6	;RP1=0, select bank0
+   774     06FE  0094               	movwf	20	;volatile
+   775     06FF                     l587:
+   776                           
+   777                           ;EPROM_1.c: 33:     SSPSTAT = 0x00;
+   778     06FF  1683               	bsf	3,5	;RP0=1, select bank1
+   779     0700  1303               	bcf	3,6	;RP1=0, select bank1
+   780     0701  0194               	clrf	20	;volatile
+   781     0702                     l17:
+   782     0702  0008               	return
+   783     0703                     __end_of_SPI_Master_init:
+   784     0002                     ___latbits      equ	2
+   785     007E                     btemp           set	126	;btemp
+   786     007E                     btemp0          set	126
+   787     007F                     btemp1          set	127
+   788     007E                     wtemp0          set	126
+   789     007F                     wtemp0a         set	127
+   790     007F                     ttemp0a         set	127
+   791     0080                     ltemp0a         set	128
+   792                           
+   793                           	psect	config
+   794                           
+   795                           ;Config register CONFIG @ 0x2007
+   796                           ;	Oscillator Selection bits
+   797                           ;	FOSC = HS, HS oscillator
+   798                           ;	Watchdog Timer Enable bit
+   799                           ;	WDTE = OFF, WDT disabled
+   800                           ;	Power-up Timer Enable bit
+   801                           ;	PWRTE = OFF, PWRT disabled
+   802                           ;	Brown-out Reset Enable bit
+   803                           ;	BOREN = OFF, BOR disabled
+   804                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+   805                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+   806                           ;	Data EEPROM Memory Code Protection bit
+   807                           ;	CPD = OFF, Data EEPROM code protection off
+   808                           ;	Flash Program Memory Write Enable bits
+   809                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+   810                           ;	In-Circuit Debugger Mode bit
+   811                           ;	DEBUG = 0x1, unprogrammed default
+   812                           ;	Flash Program Memory Code Protection bit
+   813                           ;	CP = OFF, Code protection off
+   814     2007                     	org	8199
+   815     2007  3F3A               	dw	16186
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      8       8
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_SPI_write_page
+    _SPI_write_page->_SPI_Master_data
+    _SPI_write_byte->_SPI_Master_data
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 3     3      0      75
+                                              5 COMMON     3     3      0
+                    _SPI_Master_init
+                     _SPI_write_byte
+                     _SPI_write_page
+ ---------------------------------------------------------------------------------
+ (1) _SPI_write_page                                       4     4      0      60
+                                              1 COMMON     4     4      0
+                    _SPI_Master_data
+ ---------------------------------------------------------------------------------
+ (1) _SPI_write_byte                                       2     2      0      15
+                                              1 COMMON     2     2      0
+                    _SPI_Master_data
+ ---------------------------------------------------------------------------------
+ (2) _SPI_Master_data                                      1     1      0      15
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _SPI_Master_init                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _SPI_Master_init
+   _SPI_write_byte
+     _SPI_Master_data
+   _SPI_write_page
+     _SPI_Master_data
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON           14      0       0      0.0%
+BITBANK0            80      0       0      0.0%
+BITBANK1            80      0       0      0.0%
+BITBANK3            96      0       0      0.0%
+BITBANK2            96      0       0      0.0%
+COMMON              14      8       8     57.1%
+BANK0               80      0       0      0.0%
+BANK1               80      0       0      0.0%
+BANK3               96      0       0      0.0%
+BANK2               96      0       0      0.0%
+STACK                0      0       0      0.0%
+DATA                 0      0       8      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
+Symbol Table                                                                                   Thu Dec  4 12:16:10 2025
+
+        _SPI_Master_data 0703          _SPI_Master_init 06FB                       l20 0708  
+                     l22 070C                       l30 07E3                       l23 070D  
+                     l31 07FB                       l17 0702                       l26 0793  
+                     l36 073B                       l37 073B                       u10 070C  
+                     u11 070B                       u20 07E3                       u21 07E2  
+                     u37 0722                       u47 0734                       u57 079B  
+                     u67 07B0                       u77 07EA                       u87 0746  
+                     u97 075B                      l601 0760                      l611 0790  
+                    l603 077B                      l605 077E                      l621 07A9  
+                    l613 0794                      l607 0787                      l623 07AC  
+                    l615 0797                      l609 078A                      l641 07EF  
+                    l633 07CE                      l625 07B5                      l617 07A0  
+                    l643 07F2                      l635 07D4                      l627 07CA  
+                    l619 07A3                      l651 0717                      l645 07F8  
+                    l637 07DA                      l653 0729                      l583 0704  
+                    l591 0742                      l639 07E6                      l655 072E  
+                    l647 070E                      l585 06FB                      l593 074B  
+                    l649 0712                      l587 06FF                      l595 074E  
+                    l597 0754                      l589 073F                      l599 0757  
+                    _RC0 0038                      u107 0782                     _main 070E  
+                   btemp 007E                     start 0000                    ?_main 0070  
+                  _TRISC 0087                    _SSPIF 0063                    btemp0 007E  
+                  btemp1 007F                    status 0003                    wtemp0 007E  
+__end_of_SPI_Master_data 070E  __end_of_SPI_Master_init 0703          __initialization 07FC  
+           __end_of_main 073F                   ??_main 0075                   _SSPCON 0014  
+                 _SSPBUF 0013         SPI_Master_data@a 0070                   ltemp0a 0080  
+                 ttemp0a 007F                   wtemp0a 007F  __end_of__initialization 07FC  
+       ?_SPI_Master_data 0070         ?_SPI_Master_init 0070           __pcstackCOMMON 0070  
+             __pmaintext 070E                  _SSPSTAT 0094           _SPI_write_page 0794  
+         _SPI_write_byte 073F                  __ptext1 0794                  __ptext2 073F  
+                __ptext3 0703                  __ptext4 06FB     end_of_initialization 07FC  
+ __end_of_SPI_write_page 07FC   __end_of_SPI_write_byte 0794          ?_SPI_write_page 0070  
+        ?_SPI_write_byte 0070      start_initialization 07FC                ___latbits 0002  
+        SPI_write_page@i 0073        ??_SPI_Master_data 0070        ??_SPI_Master_init 0070  
+       ??_SPI_write_page 0071         ??_SPI_write_byte 0071  

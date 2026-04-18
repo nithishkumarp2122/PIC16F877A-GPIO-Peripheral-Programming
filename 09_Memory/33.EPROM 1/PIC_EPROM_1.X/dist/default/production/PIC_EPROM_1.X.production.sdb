@@ -1,0 +1,66 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F877A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"29 E:\EMBEDDED SYSTEM\PIC\33.EPROM 1\PIC_EPROM_1.X\EPROM_1.c
+[v _SPI_Master_init SPI_Master_init `(v  1 e 1 0 ]
+"36
+[v _SPI_Master_data SPI_Master_data `(v  1 e 1 0 ]
+"43
+[v _SPI_write_byte SPI_write_byte `(v  1 e 1 0 ]
+"68
+[v _SPI_write_page SPI_write_page `(v  1 e 1 0 ]
+"98
+[v _main main `(i  1 e 2 0 ]
+"808 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"815
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+"1830
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+"2708
+[v _RC0 RC0 `VEb  1 e 0 @56 ]
+"2828
+[v _SSPIF SSPIF `VEb  1 e 0 @99 ]
+"98 E:\EMBEDDED SYSTEM\PIC\33.EPROM 1\PIC_EPROM_1.X\EPROM_1.c
+[v _main main `(i  1 e 2 0 ]
+{
+"109
+} 0
+"68
+[v _SPI_write_page SPI_write_page `(v  1 e 1 0 ]
+{
+"70
+[v SPI_write_page@i i `ui  1 a 2 3 ]
+"95
+} 0
+"43
+[v _SPI_write_byte SPI_write_byte `(v  1 e 1 0 ]
+{
+"66
+} 0
+"36
+[v _SPI_Master_data SPI_Master_data `(v  1 e 1 0 ]
+{
+[v SPI_Master_data@a a `uc  1 p 1 wreg ]
+[v SPI_Master_data@a a `uc  1 p 1 wreg ]
+"38
+[v SPI_Master_data@a a `uc  1 p 1 0 ]
+"41
+} 1
+"29
+[v _SPI_Master_init SPI_Master_init `(v  1 e 1 0 ]
+{
+"34
+} 0
